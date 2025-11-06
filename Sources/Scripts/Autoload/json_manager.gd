@@ -1,0 +1,79 @@
+extends Node
+
+func __parse_error_json(json: JSON, content: String) -> Dictionary[String, Variant]:
+	
+	var error: Error = json.parse(content)
+	
+	# Si no hay error al parsear el json, devuelve sus datos
+	if error == OK:
+		return json.data as Dictionary[String, Variant]
+	
+	# Si da error, muestra un mensaje en el debugger y devuelve un json vacio
+	push_error(
+		"JSON Parse Error: ",
+		json.get_error_message(),
+		" in ", content, " at line ",
+		json.get_error_line()
+	)
+	return {}
+
+## Lee un archivo json y lo devuelve como diccionario
+func load_json(path: String) -> Dictionary[String, Variant]:
+	
+	# Abre el archivo JSON
+	var file: FileAccess = FileAccess.open(path, FileAccess.READ)
+	
+	# Si no existe, muestra un error y devuelve un diccionario vacio
+	if !file:
+		push_error(
+			"Error opening file:\n\n",
+			FileAccess.get_open_error() # Consigue el error que ocurrio
+		)
+		return {}
+	
+	# Consigue el contenido del archivo en texto
+	var content: String = file.get_as_text()
+	# Cierra el archivo para que no consuma mas recursos
+	file.close()
+	
+	# Crea una instancia de la clase JSON
+	var json: JSON = JSON.new()
+	
+	# Ejecuta la funcion __parse_error_json y devuelve su value
+	return __parse_error_json(json, content)
+
+## Convierte un string de un json a una clase cualquiera
+func json_str_to_class(json_str: String, obj: Variant):
+	
+	# Parsea el string
+	var data: Dictionary = JSON.parse_string(json_str)
+	
+	# Si el parseo es null, devuelve nada
+	if data == null:
+		return
+	
+	# Si no  es null, ejecuta la funcion json_to_class y devuelve su valor
+	return json_to_class(data, obj)
+
+func json_to_class(json: Dictionary, obj: Variant):
+	
+	# Revisa cada key del json
+	for key in json.keys():
+		
+		# Si el objeto tiene un atributo con el nombre de la key, le pone
+		# el valor que esta en el json
+		if obj.has_variable(key):
+			obj.set(key, json[key])
+			continue
+		
+		# Si el objeto no tiene ese atributo, devuelve error y la funcion
+		# devuelve nada
+		# Esto es para evitar que se parsee un json a una clase con atributos
+		# Incompletos
+		push_error(
+			"The key: ", key,
+			" Don't exists in the class ", typeof(obj)
+		)
+		return null
+	
+	return obj
