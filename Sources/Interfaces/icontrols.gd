@@ -1,8 +1,8 @@
-extends Node
+extends Interface
 
 class_name IControls
 
-var up: int
-var down: int
-var left: int
-var right: int
+var up: Key
+var down: Key
+var left: Key
+var right: Key

@@ -1,24 +1,33 @@
 extends Node
 
-func __parse_error_json(json: JSON, content: String) -> Dictionary[String, Variant]:
+func __parse_error_json(json: JSON, content: String) -> Dictionary:
+	
+	var result
 	
 	var error: Error = json.parse(content)
 	
-	# Si no hay error al parsear el json, devuelve sus datos
-	if error == OK:
-		return json.data as Dictionary[String, Variant]
 	
-	# Si da error, muestra un mensaje en el debugger y devuelve un json vacio
-	push_error(
-		"JSON Parse Error: ",
-		json.get_error_message(),
-		" in ", content, " at line ",
-		json.get_error_line()
-	)
-	return {}
+	if error == OK:
+		# Si no hay error al parsear el json, devuelve sus datos
+		
+		var type_json = typeof(json.data)
+		
+		if type_json == TYPE_DICTIONARY:
+			result = json.data
+		else:
+			push_error("Expected a Dictionary, but got: ", type_json)
+	else:
+		# Si da error, muestra un mensaje en el debugger y devuelve un json vacio
+		push_error(
+			"JSON Parse Error: ",
+			json.get_error_message(),
+			" in ", content, " at line ",
+			json.get_error_line()
+		)
+	return result
 
 ## Lee un archivo json y lo devuelve como diccionario
-func load_json(path: String) -> Dictionary[String, Variant]:
+func load_json(path: String) -> Dictionary:
 	
 	# Lee el archivo JSON
 	var content: String = FileManager.load_file(path)
@@ -42,28 +51,57 @@ func json_str_to_class(json_str: String, obj: Variant):
 	# Si no  es null, ejecuta la funcion json_to_class y devuelve su valor
 	return json_to_class(data, obj)
 
-func json_to_class(json: Dictionary, obj: Variant):
+func json_to_class(json: Dictionary, obj: Object):
 	
-	# Revisa cada key del json
 	for key in json.keys():
 		
-		if not obj.has_variable(key):
-			push_error(
-				"The key: ", key,
-				" Don't exists in the class ", typeof(obj)
-			)
-			return null
-		
 		var value = json[key]
-		var current_value = obj.get(key)
 		
 		if typeof(value) == TYPE_DICTIONARY:
-			json_to_class(value, current_value)
-			continue
-		
-		obj.set(key, value)
+			
+			if typeof(obj) == TYPE_DICTIONARY:
+				if not obj.has(key) or typeof(obj[key]) != TYPE_DICTIONARY:
+					obj[key] = {}
+				
+				json_to_class(value, obj[key])
+			else:
+				json_to_class(value, obj.get(key))
+		else:
+			
+			if typeof(obj) == TYPE_DICTIONARY:
+				obj[key] = value
+			else:
+				obj.set(key, value)
 	
 	return obj
+
+## Convierte una clase a un diccionario
+func class_to_json(obj: Object) -> Dictionary:
+	
+	## Json donde se guardaran los values de la clase
+	var json: Dictionary = {}
+	
+	for property in ClassManager.get_only_class_properties(obj):
+		
+		## Valor de la propiedad de la case
+		var property_value = obj.get(property.name)
+		
+		# Evita que sea null
+		if property_value == null || typeof(property_value) == TYPE_NIL:
+			continue
+		
+		# Evita que muestre el valor de los archivos a los que pertenecen
+		if property.name.ends_with(".gd"):
+			continue
+		
+		# Si es de tipo objeto (otra clase), provoca recursividad
+		if typeof(property_value) == TYPE_OBJECT:
+			property_value = class_to_json(property_value)
+		
+		# Añade al diccionario la propiedad
+		json.get_or_add(property.name, property_value)
+		
+	return json
 
 ## Edita completamente un archivo json y guarda un diccionario
 func write_json_file(path: String, json: Dictionary) -> void:

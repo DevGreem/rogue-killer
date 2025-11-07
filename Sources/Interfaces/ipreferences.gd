@@ -1,4 +1,4 @@
-extends Node
+extends Interface
 
 class_name IPreferences
 
