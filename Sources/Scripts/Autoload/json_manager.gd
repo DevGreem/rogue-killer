@@ -20,21 +20,8 @@ func __parse_error_json(json: JSON, content: String) -> Dictionary[String, Varia
 ## Lee un archivo json y lo devuelve como diccionario
 func load_json(path: String) -> Dictionary[String, Variant]:
 	
-	# Abre el archivo JSON
-	var file: FileAccess = FileAccess.open(path, FileAccess.READ)
-	
-	# Si no existe, muestra un error y devuelve un diccionario vacio
-	if !file:
-		push_error(
-			"Error opening file:\n\n",
-			FileAccess.get_open_error() # Consigue el error que ocurrio
-		)
-		return {}
-	
-	# Consigue el contenido del archivo en texto
-	var content: String = file.get_as_text()
-	# Cierra el archivo para que no consuma mas recursos
-	file.close()
+	# Lee el archivo JSON
+	var content: String = FileManager.load_file(path)
 	
 	# Crea una instancia de la clase JSON
 	var json: JSON = JSON.new()
@@ -77,3 +64,7 @@ func json_to_class(json: Dictionary, obj: Variant):
 		return null
 	
 	return obj
+
+func write_json_file(path: String, json: Dictionary) -> void:
+	
+	FileManager.save_in_file(path, JSON.stringify(json))
