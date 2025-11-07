@@ -2,36 +2,24 @@ extends Node
 
 func get_class_properties(obj: Object) -> Array:
 	
+	## Propiedades de los padres y de la clase
 	var properties := []
-	var current_class := obj.get_class()
 	
-	while current_class != "Object" and current_class != "Node":
+	## Script actual
+	var script: Script = obj.get_script()
+	
+	while script:
 		
-		## Script de la clase
-		var script = obj.get_script()
-		
-		# Si tiene padre, se obtiene la propiedad _base
-		if script:
-			var script_properties = []
+		var script_properties = []
 			
-			for property in obj.get_property_list():
+		for property in get_only_class_properties(obj):
 				
-				if property.class_name == current_class:
-					script_properties.append(property)
+			script_properties.append(property)
 			
-			properties += script_properties
+		properties += script_properties
 			
-			## Se consigue la clase padre
-			script = script.get_base_script()
-			
-			if script:
-				current_class = script.get_instance_base_type()
-				continue
-			
-			break
-		
-		else:
-			break
+		## Se consigue la clase padre
+		script = script.get_base_script()
 	
 	return properties
 

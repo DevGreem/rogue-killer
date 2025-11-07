@@ -81,7 +81,7 @@ func class_to_json(obj: Object) -> Dictionary:
 	## Json donde se guardaran los values de la clase
 	var json: Dictionary = {}
 	
-	for property in ClassManager.get_only_class_properties(obj):
+	for property in ClassManager.get_class_properties(obj):
 		
 		## Valor de la propiedad de la case
 		var property_value = obj.get(property.name)
