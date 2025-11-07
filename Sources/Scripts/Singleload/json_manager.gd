@@ -47,24 +47,25 @@ func json_to_class(json: Dictionary, obj: Variant):
 	# Revisa cada key del json
 	for key in json.keys():
 		
-		# Si el objeto tiene un atributo con el nombre de la key, le pone
-		# el valor que esta en el json
-		if obj.has_variable(key):
-			obj.set(key, json[key])
+		if not obj.has_variable(key):
+			push_error(
+				"The key: ", key,
+				" Don't exists in the class ", typeof(obj)
+			)
+			return null
+		
+		var value = json[key]
+		var current_value = obj.get(key)
+		
+		if typeof(value) == TYPE_DICTIONARY:
+			json_to_class(value, current_value)
 			continue
 		
-		# Si el objeto no tiene ese atributo, devuelve error y la funcion
-		# devuelve nada
-		# Esto es para evitar que se parsee un json a una clase con atributos
-		# Incompletos
-		push_error(
-			"The key: ", key,
-			" Don't exists in the class ", typeof(obj)
-		)
-		return null
+		obj.set(key, value)
 	
 	return obj
 
+## Edita completamente un archivo json y guarda un diccionario
 func write_json_file(path: String, json: Dictionary) -> void:
 	
-	FileManager.save_in_file(path, JSON.stringify(json))
+	FileManager.save_in_file(path, JSON.stringify(json, "\t"))

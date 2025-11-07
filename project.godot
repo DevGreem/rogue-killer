@@ -17,11 +17,12 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-FileManager="*res://Sources/Scripts/Autoload/file_manager.gd"
-JsonManager="*res://Sources/Scripts/Autoload/json_manager.gd"
-ScenesManager="*res://Sources/Scripts/Autoload/scenes_manager.gd"
-Preferences="*res://Sources/Scripts/Autoload/preferences.gd"
-PlayerMovement="*res://Sources/Scripts/Autoload/player_movement.gd"
+FileManager="*res://Sources/Scripts/Singleload/file_manager.gd"
+JsonManager="*res://Sources/Scripts/Singleload/json_manager.gd"
+ScenesManager="*res://Sources/Scripts/Singleload/scenes_manager.gd"
+Preferences="*res://Sources/Interfaces/ipreferences.gd"
+PlayerMovement="*res://Sources/Scripts/Singleload/player_movement.gd"
+Configs="*res://Sources/Scripts/Singleload/configs.gd"
 
 [display]
 
