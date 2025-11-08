@@ -1,4 +1,4 @@
-extends Interface
+extends IConfigBase
 
 class_name IControls
 

@@ -39,7 +39,7 @@ func load_json(path: String) -> Dictionary:
 	return __parse_error_json(json, content)
 
 ## Convierte un string de un json a una clase cualquiera
-func json_str_to_class(json_str: String, obj: Variant):
+func json_str_to_class(json_str: String, obj: Variant) -> void:
 	
 	# Parsea el string
 	var data: Dictionary = JSON.parse_string(json_str)
@@ -49,13 +49,22 @@ func json_str_to_class(json_str: String, obj: Variant):
 		return
 	
 	# Si no  es null, ejecuta la funcion json_to_class y devuelve su valor
-	return json_to_class(data, obj)
+	json_to_class(data, obj)
 
-func json_to_class(json: Dictionary, obj: Object):
+func json_to_class(json: Dictionary, obj: Object, to_key = null) -> void:
+	
+	if !obj:
+		return
+		
+	if to_key:
+		for key in to_key.split("/"):
+			json = json[key]
 	
 	for key in json.keys():
 		
 		var value = json[key]
+		
+		print("Key: ", key, "\nValue: ", value, "\n\n")
 		
 		if typeof(value) == TYPE_DICTIONARY:
 			
@@ -64,16 +73,16 @@ func json_to_class(json: Dictionary, obj: Object):
 					obj[key] = {}
 				
 				json_to_class(value, obj[key])
-			else:
-				json_to_class(value, obj.get(key))
-		else:
+				continue
+
+			json_to_class(value, obj.get(key))
+			continue
 			
-			if typeof(obj) == TYPE_DICTIONARY:
-				obj[key] = value
-			else:
-				obj.set(key, value)
-	
-	return obj
+		if typeof(obj) == TYPE_DICTIONARY:
+			obj[key] = value
+			continue
+			
+		obj.set(key, value)
 
 ## Convierte una clase a un diccionario
 func class_to_json(obj: Object) -> Dictionary:

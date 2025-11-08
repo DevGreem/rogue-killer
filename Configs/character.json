@@ -1,0 +1,36 @@
+{
+	"object_name": null,
+	"stats": {
+		"health": {
+			"min_value": 0.0,
+			"max_value": 0.0
+		},
+		"dmg": {
+			"min_value": 0.0,
+			"max_value": 0.0,
+		},
+		"attack_cooldown": 0.5,
+		"stamine_duration": {
+			"min_value": 5.0,
+			"max_value": 5.0
+		},
+		"run_speed": 1.5
+	},
+	"inventory": [],
+	"passive": {
+		"positive": [],
+		"negative": []
+	},
+	"buffs": {
+		"positive": [],
+		"negative": []
+	},
+	"equipment": {
+		"armor": {
+			"head": null,
+			"chest": null,
+			"feet": null
+		},
+		"weapon": null
+	},
+}
