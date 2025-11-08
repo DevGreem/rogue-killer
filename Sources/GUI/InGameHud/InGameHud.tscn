@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://6nytt0s0obrs"]
+[gd_scene format=3 uid="uid://becgf3q4w21s2"]
 
-[node name="Control" type="Control"]
+[node name="InGameHud" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

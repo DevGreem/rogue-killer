@@ -1,8 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dos0sq7hto74h"]
+[gd_scene load_steps=2 format=3 uid="uid://dos0sq7hto74h"]
 
-[ext_resource type="Script" uid="uid://cnax0p2q8g64o" path="res://Sources/Scenes/MainMenu/start_history_mode.gd" id="1_g2vr8"]
-[ext_resource type="Script" uid="uid://bxqp3erygxvbt" path="res://Sources/Scenes/MainMenu/test.gd" id="2_eei37"]
-[ext_resource type="Script" uid="uid://ck0y8limpey3h" path="res://Sources/Scenes/MainMenu/open_configurations.gd" id="3_nfmso"]
+[ext_resource type="Script" uid="uid://ew0c2qka71p1" path="res://Sources/Scenes/Start/start.gd" id="1_jiecr"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -11,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_jiecr")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
@@ -22,14 +21,11 @@ offset_bottom = 175.0
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "History Mode"
-script = ExtResource("1_g2vr8")
 
 [node name="Button2" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Roguelike"
-script = ExtResource("2_eei37")
 
 [node name="Button3" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Configurations"
-script = ExtResource("3_nfmso")

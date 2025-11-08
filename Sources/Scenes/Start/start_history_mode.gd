@@ -5,5 +5,5 @@ extends Button
 func _ready() -> void:
 	
 	# Al presionar el boton que dice "History mode", cambia a la escena de la ruta de abajo.
-	pressed.connect(func(): ScenesManager.to_scene("TestScene"))
+	pressed.connect(func(): SceneManager.to_scene("TestScene"))
 	
