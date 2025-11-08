@@ -7,7 +7,7 @@ var min_value: float:
 		return min_value
 		
 	set(value):
-		if limit_max:
+		if limit_max and max_value != 0.0 and max_value:
 			min_value = min(max_value, value)
 			return
 		
@@ -16,20 +16,16 @@ var min_value: float:
 var max_value: float
 var limit_max: bool
 
-func _init(_min: float = 0, _max: float = 0, _limit_max: bool = true) -> void:
-	min_value = _min
-	max_value = _max
-	limit_max = _limit_max
-
-## Evita que el valor actual sobre pase el maximo
-func overlimit() -> void:
+func _init(_min = null, _max = null, _limit_max: bool = true) -> void:
 	
-	if limit_max:
-		min_value = min(max_value, min_value)
+	if _max:
+		max_value = _max
+	
+	if _min:
+		min_value = _min
+
+	limit_max = _limit_max
 	
 func is_in_range(value: float) -> bool:
 	
-	if value <= min_value || value >= max_value:
-		return false
-	
-	return true
+	return value >= min_value and value <= max_value

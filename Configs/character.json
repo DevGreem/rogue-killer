@@ -11,6 +11,7 @@
 		},
 		"attack_cooldown": 0.5,
 		"stamine_duration": {
+			"_min_value": 5.0,
 			"min_value": 5.0,
 			"max_value": 5.0
 		},

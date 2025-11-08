@@ -2,7 +2,7 @@ extends GameObject
 
 class_name Entity
 
-@export var stats: IStats
+var stats: IStats
 var passive: Array[Upgrade]
 var buffs: Array[Buff]
 
