@@ -10,12 +10,28 @@
 			"max_value": 0.0,
 		},
 		"attack_cooldown": 0.5,
-		"stamine_duration": {
-			"_min_value": 5.0,
-			"min_value": 5.0,
-			"max_value": 5.0
+		"stamine": {
+			"duration": {
+				"min_value": 5.0,
+				"max_value": 5.0
+			},
+			"reload": {
+				"min_value": 0.0,
+				"max_value": 2.0
+			},
+			"reload_speed": {
+				"flat": 0,
+				"modifier": 2.0
+			},
+			"run_speed": {
+				"flat": 0,
+				"modifier": 1.5
+			}
 		},
-		"run_speed": 1.5
+		"walk_speed": {
+			"flat": 10000,
+			"modifier": 1.0
+		}
 	},
 	"inventory": [],
 	"passive": {

@@ -1,5 +1,5 @@
-extends GameObject
+extends UniqueObject
 
 class_name Upgrade
 
-var stats: Array[IStats]
+var stats: Array[Stat]

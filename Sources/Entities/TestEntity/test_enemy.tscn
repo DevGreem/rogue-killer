@@ -1,17 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://cacbky8t4sj0x"]
+[gd_scene load_steps=12 format=3 uid="uid://d2sjvadqbxgl4"]
 
-[ext_resource type="Script" uid="uid://bp1kn58pvrdwe" path="res://Sources/Scripts/Player/player_entity.gd" id="1_hl03s"]
-[ext_resource type="Texture2D" uid="uid://o4tudvtudvh4" path="res://Assets/Textures/Tests/Greem3-1p.png" id="2_11cuf"]
-[ext_resource type="Script" uid="uid://cma12r3ug0fkc" path="res://Sources/Scripts/Entities/hitbox_component.gd" id="2_wp6k6"]
-[ext_resource type="Script" uid="uid://dmokrp31cr8u7" path="res://Sources/Scripts/Entities/inventory_component.gd" id="3_a7als"]
-[ext_resource type="Script" uid="uid://daa8uc0h1svdw" path="res://Sources/Scripts/Player/movement.gd" id="4_5pj7f"]
-[ext_resource type="Script" uid="uid://bd1it0wr4if4i" path="res://Sources/Scripts/Entities/health_component.gd" id="6_wp6k6"]
+[ext_resource type="Script" uid="uid://bp1kn58pvrdwe" path="res://Sources/Scripts/Player/player_entity.gd" id="1_5aviw"]
+[ext_resource type="Script" uid="uid://daa8uc0h1svdw" path="res://Sources/Scripts/Player/movement.gd" id="1_dluws"]
+[ext_resource type="Texture2D" uid="uid://o4tudvtudvh4" path="res://Assets/Textures/Tests/Greem3-1p.png" id="2_dluws"]
+[ext_resource type="Script" uid="uid://dmokrp31cr8u7" path="res://Sources/Scripts/Entities/inventory_component.gd" id="3_e2ge3"]
+[ext_resource type="Script" uid="uid://cma12r3ug0fkc" path="res://Sources/Scripts/Entities/hitbox_component.gd" id="4_sbuqf"]
+[ext_resource type="Script" uid="uid://bd1it0wr4if4i" path="res://Sources/Scripts/Entities/health_component.gd" id="5_kinh4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hl03s"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_11cuf")
+"texture": ExtResource("2_dluws")
 }],
 "loop": true,
 "name": &"default",
@@ -30,12 +30,11 @@ size = Vector2(220, 260)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a7als"]
 size = Vector2(222, 262)
 
-[node name="Player" type="CharacterBody2D"]
-script = ExtResource("4_5pj7f")
-speed = 10000.0
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_dluws")
 
 [node name="PlayerEntity" type="Node" parent="."]
-script = ExtResource("1_hl03s")
+script = ExtResource("1_5aviw")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_hl03s")
@@ -47,7 +46,7 @@ shape = SubResource("RectangleShape2D_aop4j")
 [node name="Inventory" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("3_a7als")
+script = ExtResource("3_e2ge3")
 
 [node name="InventoryCollision" type="CollisionShape2D" parent="Inventory"]
 position = Vector2(-0.5, -1)
@@ -56,25 +55,23 @@ debug_color = Color(0.645573, 0.5191611, 0.16423756, 0.41960785)
 
 [node name="HitboxComponent" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 8
-script = ExtResource("2_wp6k6")
+collision_mask = 4
+script = ExtResource("4_sbuqf")
 min_damage = 5.0
 max_damage = 10.0
 
 [node name="HitboxCollision" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(185, -3)
 shape = SubResource("RectangleShape2D_wp6k6")
 debug_color = Color(0.80121416, 0.22135612, 0.1792337, 0.41960785)
 
 [node name="HealthComponent" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 0
-script = ExtResource("6_wp6k6")
-actual_health = 5.0
-max_health = 10.0
+collision_layer = 8
+script = ExtResource("5_kinh4")
+actual_health = 1.0
+max_health = 1.0
 
 [node name="HealthCollision" type="CollisionShape2D" parent="HealthComponent"]
-position = Vector2(-3, -3)
+position = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_a7als")
 debug_color = Color(0, 1, 0.21568628, 0.41960785)
 
