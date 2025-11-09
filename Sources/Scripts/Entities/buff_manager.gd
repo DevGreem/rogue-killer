@@ -1,8 +1,15 @@
-extends Node
+extends UniqueDictionary
 
 class_name BuffManager
 
-signal on_add_buff(buff: Buff)
-signal on_remove_buff(buff: Buff)
+func _init(buffs: Dictionary[String, Buff] = {}):
+	super._init(buffs)
 
-var _buffs: Dictionary[String, Buff]
+func get_buff(id: String) -> Buff:
+	return _get_object(id)
+
+func add_buff(buff: Buff) -> void:
+	_add_object(buff)
+
+func remove_buff(id: String) -> void:
+	_remove_object(id)

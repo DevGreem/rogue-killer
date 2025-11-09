@@ -11,3 +11,21 @@ enum StatType {
 	WALK_SPEED,
 	RUN_SPEED
 }
+
+enum ItemType {
+	SKIN,
+	WEAPON,
+	ARMOR_HEAD,
+	ARMOR_CHEST,
+	ARMOR_FEET,
+	BACKPACK,
+	NON_EQUIPABLE
+}
+
+enum ItemAction {
+	THROWABLE,
+	CAN_USE,
+	CAN_SELL,
+	CAN_DROP,
+	CAN_GRAB
+}

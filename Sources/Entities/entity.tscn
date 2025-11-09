@@ -1,7 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://k2jgv743f113"]
+[gd_scene load_steps=13 format=3 uid="uid://k2jgv743f113"]
 
+[ext_resource type="Script" uid="uid://csnm62h4kqd4m" path="res://Sources/Scripts/Entities/entity.gd" id="1_1qomt"]
+[ext_resource type="Script" uid="uid://ddkd3q4dso4qe" path="res://Sources/Scripts/Entities/passive_manager.gd" id="2_1qomt"]
 [ext_resource type="Texture2D" uid="uid://o4tudvtudvh4" path="res://Assets/Textures/Tests/Greem3-1p.png" id="2_lt4af"]
-[ext_resource type="Script" uid="uid://qs2n0jyrp8sq" path="res://Sources/Scripts/Entities/stats_component.gd" id="2_w5jb3"]
+[ext_resource type="Script" uid="uid://ld0ex48thjfj" path="res://Sources/Scripts/Entities/buff_manager.gd" id="3_gd86y"]
 [ext_resource type="Script" uid="uid://dmokrp31cr8u7" path="res://Sources/Scripts/Entities/inventory_component.gd" id="3_w5jb3"]
 [ext_resource type="Script" uid="uid://cma12r3ug0fkc" path="res://Sources/Scripts/Entities/hitbox_component.gd" id="4_1qomt"]
 [ext_resource type="Script" uid="uid://bd1it0wr4if4i" path="res://Sources/Scripts/Entities/health_component.gd" id="5_gd86y"]
@@ -30,11 +32,13 @@ size = Vector2(220, 260)
 size = Vector2(222, 262)
 
 [node name="Entity" type="CharacterBody2D"]
-
-[node name="Stats" type="Node" parent="."]
-script = ExtResource("2_w5jb3")
+script = ExtResource("1_1qomt")
 
 [node name="PassiveManager" type="Node" parent="."]
+script = ExtResource("2_1qomt")
+
+[node name="BuffManager" type="Node" parent="."]
+script = ExtResource("3_gd86y")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_hl03s")

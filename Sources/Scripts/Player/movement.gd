@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var speed: float
-@onready var entity: Node = $PlayerEntity
+@onready var entity: CharacterBody2D = get_parent()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -22,6 +22,7 @@ func is_running(delta: float) -> bool:
 	
 	# Si la recarga de energia es igual a su valor maximo
 	# Empieza a recarga la energia
+	entity.get_stat()
 	if entity.stats.stamine.reload.min_value == entity.stats.stamine.reload.max_value:
 		# delta se multiplica por el modificador de velocidad de recarga, para que sea mas o menos rapido
 		entity.stats.stamine.duration.min_value += delta*entity.stats.stamine.reload_speed.modifier
