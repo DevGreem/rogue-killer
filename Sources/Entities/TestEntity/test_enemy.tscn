@@ -1,11 +1,16 @@
 [gd_scene load_steps=12 format=3 uid="uid://d2sjvadqbxgl4"]
 
-[ext_resource type="Script" uid="uid://bp1kn58pvrdwe" path="res://Sources/Scripts/Player/player_entity.gd" id="1_5aviw"]
-[ext_resource type="Script" uid="uid://daa8uc0h1svdw" path="res://Sources/Scripts/Player/movement.gd" id="1_dluws"]
+[ext_resource type="Script" uid="uid://daa8uc0h1svdw" path="res://Sources/Scripts/Entities/Player/player.gd" id="1_dluws"]
 [ext_resource type="Texture2D" uid="uid://o4tudvtudvh4" path="res://Assets/Textures/Tests/Greem3-1p.png" id="2_dluws"]
 [ext_resource type="Script" uid="uid://dmokrp31cr8u7" path="res://Sources/Scripts/Entities/inventory_component.gd" id="3_e2ge3"]
 [ext_resource type="Script" uid="uid://cma12r3ug0fkc" path="res://Sources/Scripts/Entities/hitbox_component.gd" id="4_sbuqf"]
 [ext_resource type="Script" uid="uid://bd1it0wr4if4i" path="res://Sources/Scripts/Entities/health_component.gd" id="5_kinh4"]
+
+[sub_resource type="GDScript" id="GDScript_5aviw"]
+script/source = "extends Entity
+
+class_name PlayerEntity
+"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hl03s"]
 animations = [{
@@ -32,9 +37,10 @@ size = Vector2(222, 262)
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_dluws")
+speed = null
 
 [node name="PlayerEntity" type="Node" parent="."]
-script = ExtResource("1_5aviw")
+script = SubResource("GDScript_5aviw")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_hl03s")

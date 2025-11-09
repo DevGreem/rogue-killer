@@ -1,6 +1,6 @@
 extends Resource
 
-class_name Stat
+class_name StatModifier
 
 signal on_change_flat_value(before: float, now: float)
 signal on_change_modifier(before: float, now: float)
@@ -8,6 +8,7 @@ signal on_change_modifier(before: float, now: float)
 ## Tipo de estadistica
 @export var STAT_TYPE: Enums.StatType
 
+@export_category("Values")
 ## Valor agregado plano
 @export var flat: float = 0:
 	set(value):
@@ -19,8 +20,3 @@ signal on_change_modifier(before: float, now: float)
 	set(value):
 		on_change_modifier.emit(modifier, value)
 		modifier = value
-
-func _init(_stat_type: Enums.StatType, _flat: float = 0, _modifier: float = 1.0):
-	STAT_TYPE = _stat_type
-	flat = _flat
-	modifier = _modifier

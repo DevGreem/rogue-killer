@@ -2,4 +2,4 @@ extends UniqueObject
 
 class_name Upgrade
 
-var stats: Array[Stat]
+var stats: Array[StatModifier]

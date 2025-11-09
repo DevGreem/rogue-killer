@@ -65,17 +65,19 @@ min_damage = 5.0
 max_damage = 10.0
 
 [node name="HitboxCollision" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(247, 1)
 shape = SubResource("RectangleShape2D_wp6k6")
 debug_color = Color(0.80121416, 0.22135612, 0.1792337, 0.41960785)
 
 [node name="HealthComponent" type="Area2D" parent="."]
-collision_layer = 8
+collision_layer = 4
+collision_mask = 8
 script = ExtResource("5_gd86y")
 actual_health = 1.0
 max_health = 1.0
 
 [node name="HealthCollision" type="CollisionShape2D" parent="HealthComponent"]
-position = Vector2(1, 1)
+position = Vector2(6, 2)
 shape = SubResource("RectangleShape2D_a7als")
 debug_color = Color(0, 1, 0.21568628, 0.41960785)
 

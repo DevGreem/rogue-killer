@@ -29,12 +29,12 @@ func _init(_inventory: Dictionary[String, Item] = {}, _equipment = null):
 ## Guarda un item en el inventario
 func save_item(item: Item) -> void:
 	
-	if inventory.has(item.id):
-		inventory[item.id].stack.min_value += 1
+	if inventory.has(item.data.id):
+		inventory[item.data.id].stack.min_value += 1
 		return
 	
 	print("Added item: ", item.name)
-	inventory[item.id] = item
+	inventory[item.data.id] = item
 
 ## Elimina un item del inventario
 func drop_item_by_id(id: String) -> void:

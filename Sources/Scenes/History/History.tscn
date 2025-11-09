@@ -1,15 +1,17 @@
-[gd_scene load_steps=13 format=4 uid="uid://cbk8o5batsqd3"]
+[gd_scene load_steps=29 format=4 uid="uid://cbk8o5batsqd3"]
 
 [ext_resource type="Script" uid="uid://bsume3puh5rj7" path="res://Sources/Scenes/History/history.gd" id="1_h41w0"]
 [ext_resource type="PackedScene" uid="uid://bwslnnte5pkmq" path="res://Sources/Scripts/Items/item.tscn" id="4_8fvae"]
 [ext_resource type="Texture2D" uid="uid://cksj2jlwir7b8" path="res://Assets/Textures/Tests/test_tiles.png" id="4_hjqag"]
-[ext_resource type="PackedScene" uid="uid://cacbky8t4sj0x" path="res://Sources/Scripts/Player/player.tscn" id="5_8fvae"]
+[ext_resource type="PackedScene" uid="uid://cacbky8t4sj0x" path="res://Sources/Scripts/Entities/Player/player.tscn" id="5_8fvae"]
 [ext_resource type="Texture2D" uid="uid://cb2n8pmfr1ami" path="res://Assets/Textures/Tests/spikes.png" id="5_eqhkt"]
-[ext_resource type="PackedScene" uid="uid://d2sjvadqbxgl4" path="res://Sources/Entities/TestEntity/test_enemy.tscn" id="6_eqhkt"]
 [ext_resource type="Script" uid="uid://cd814yssmiyd8" path="res://Data/ItemData.gd" id="7_1aqja"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_losys"]
-size = Vector2(116, 92)
+[ext_resource type="PackedScene" uid="uid://k2jgv743f113" path="res://Sources/Entities/entity.tscn" id="8_cqabd"]
+[ext_resource type="Script" uid="uid://ekwsloahgfjm" path="res://Data/LimitedData.gd" id="8_eoje6"]
+[ext_resource type="Script" uid="uid://b5hdqmu0sfo6r" path="res://Data/StatData.gd" id="8_iiyrb"]
+[ext_resource type="Script" uid="uid://cxb0t8qmu15xx" path="res://Data/StamineData.gd" id="10_uu33h"]
+[ext_resource type="Script" uid="uid://clckslbeli8df" path="res://Data/StatModifier.gd" id="11_oe1c2"]
+[ext_resource type="Script" uid="uid://16kgqw8lliyj" path="res://Data/StatsModifierData.gd" id="12_3albf"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_hjqag"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -44,42 +46,78 @@ script = ExtResource("7_1aqja")
 texture = ExtResource("5_eqhkt")
 metadata/_custom_type_script = "uid://cd814yssmiyd8"
 
+[sub_resource type="Resource" id="Resource_uu33h"]
+script = ExtResource("8_eoje6")
+metadata/_custom_type_script = "uid://ekwsloahgfjm"
+
+[sub_resource type="Resource" id="Resource_oe1c2"]
+script = ExtResource("8_eoje6")
+metadata/_custom_type_script = "uid://ekwsloahgfjm"
+
+[sub_resource type="Resource" id="Resource_3albf"]
+script = ExtResource("10_uu33h")
+metadata/_custom_type_script = "uid://cxb0t8qmu15xx"
+
+[sub_resource type="Resource" id="Resource_eoje6"]
+script = ExtResource("8_iiyrb")
+health = SubResource("Resource_oe1c2")
+damage = SubResource("Resource_uu33h")
+stamine = SubResource("Resource_3albf")
+metadata/_custom_type_script = "uid://b5hdqmu0sfo6r"
+
+[sub_resource type="Resource" id="Resource_pal4h"]
+script = ExtResource("12_3albf")
+metadata/_custom_type_script = "uid://16kgqw8lliyj"
+
+[sub_resource type="Resource" id="Resource_dvwp0"]
+script = ExtResource("8_eoje6")
+metadata/_custom_type_script = "uid://ekwsloahgfjm"
+
+[sub_resource type="Resource" id="Resource_dtask"]
+script = ExtResource("8_eoje6")
+metadata/_custom_type_script = "uid://ekwsloahgfjm"
+
+[sub_resource type="Resource" id="Resource_w0i4m"]
+script = ExtResource("8_eoje6")
+metadata/_custom_type_script = "uid://ekwsloahgfjm"
+
+[sub_resource type="Resource" id="Resource_473tn"]
+script = ExtResource("8_eoje6")
+metadata/_custom_type_script = "uid://ekwsloahgfjm"
+
+[sub_resource type="Resource" id="Resource_swvix"]
+script = ExtResource("10_uu33h")
+duration = SubResource("Resource_w0i4m")
+reload = SubResource("Resource_473tn")
+metadata/_custom_type_script = "uid://cxb0t8qmu15xx"
+
+[sub_resource type="Resource" id="Resource_ihrnv"]
+script = ExtResource("8_iiyrb")
+health = SubResource("Resource_dtask")
+damage = SubResource("Resource_dvwp0")
+stamine = SubResource("Resource_swvix")
+metadata/_custom_type_script = "uid://b5hdqmu0sfo6r"
+
+[sub_resource type="Resource" id="Resource_yvokl"]
+script = ExtResource("12_3albf")
+metadata/_custom_type_script = "uid://16kgqw8lliyj"
+
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_h41w0")
-
-[node name="StaticBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(373, -114)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(42, 37)
-shape = SubResource("RectangleShape2D_losys")
-
-[node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
-offset_right = 88.0
-offset_bottom = 74.0
-metadata/_edit_use_anchors_ = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAmABQAAAACAAAAAAAmABMAAAACAAAAAAAmABIAAAACAAAAAAAmABEAAAACAAAAAAAmABAAAAACAAAAAAAmAA8AAAACAAAAAAAmAA4AAAACAAAAAAAmAA0AAAACAAAAAAAmAAwAAAACAAAAAAAmAAsAAAACAAAAAAAmAAoAAAACAAAAAAAmAAkAAAACAAAAAAAmAAgAAAACAAAAAAAmAAcAAAACAAAAAAAmAAYAAAACAAAAAAAmAAUAAAACAAAAAAAlAAUAAAACAAAAAAAkAAUAAAACAAAAAAAjAAUAAAACAAAAAAAiAAUAAAACAAAAAAAhAAUAAAACAAAAAAAgAAUAAAACAAAAAAAfAAUAAAACAAAAAAAeAAUAAAACAAAAAAAdAAYAAAACAAAAAAAcAAYAAAACAAAAAAAbAAYAAAACAAAAAAAbAAUAAAACAAAAAAAaAAUAAAACAAAAAAAZAAUAAAACAAAAAAAYAAUAAAACAAAAAAAXAAUAAAACAAAAAAAWAAUAAAACAAAAAAAVAAUAAAACAAAAAAAUAAUAAAACAAAAAAATAAUAAAACAAAAAAAcAAUAAAACAAAAAAAdAAUAAAACAAAAAAASAAUAAAACAAAAAAARAAUAAAACAAAAAAAQAAUAAAACAAAAAAAPAAUAAAACAAAAAAAOAAUAAAACAAAAAAAOAAYAAAACAAAAAAAOAAcAAAACAAAAAAAOAAgAAAACAAAAAAAOAAkAAAACAAAAAAAOAAoAAAACAAAAAAAOAAsAAAACAAAAAAAOAAwAAAACAAAAAAAOAA0AAAACAAAAAAAOAA4AAAACAAAAAAAOAA8AAAACAAAAAAAOABAAAAACAAAAAAAOABEAAAACAAAAAAAOABIAAAACAAAAAAAOABMAAAACAAAAAAAOABQAAAACAAAAAAARACcAAAACAAAAAAASACcAAAACAAAAAAATACcAAAACAAAAAAAUACcAAAACAAAAAAAVACcAAAACAAAAAAAWACcAAAACAAAAAAAXACcAAAACAAAAAAAYACcAAAACAAAAAAAZACcAAAACAAAAAAAaACcAAAACAAAAAAAbACcAAAACAAAAAAAcACcAAAACAAAAAAAdACcAAAACAAAAAAAeACcAAAACAAAAAAAfACcAAAACAAAAAAAkACcAAAACAAAAAAAlACcAAAACAAAAAAAjACcAAAACAAAAAAAiACcAAAACAAAAAAAhACcAAAACAAAAAAAgACcAAAACAAAAAAAQACcAAAACAAAAAAARABQAAAAAAAAAAAASABQAAAAAAAAAAAATABQAAAAAAAAAAAAUABQAAAAAAAAAAAAVABQAAAAAAAAAAAAWABQAAAAAAAAAAAAXABQAAAAAAAAAAAAYABQAAAAAAAAAAAAZABQAAAAAAAAAAAAaABQAAAAAAAAAAAAbABQAAAAAAAAAAAAcABQAAAAAAAAAAAAdABQAAAAAAAAAAAAeABQAAAAAAAAAAAAfABQAAAAAAAAAAAAgABQAAAAAAAAAAAAhABQAAAAAAAAAAAAiABQAAAAAAAAAAAAjABQAAAAAAAAAAAAkABQAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_eqhkt")
 
-[node name="Player2" parent="." instance=ExtResource("5_8fvae")]
-position = Vector2(-349, -366)
-
-[node name="Camera2D" type="Camera2D" parent="Player2"]
-position = Vector2(2, -1)
-scale = Vector2(0.61, 0.61)
-
-[node name="Spikes" parent="." instance=ExtResource("4_8fvae")]
-position = Vector2(-189, 484)
-
-[node name="Sprite2D" type="Sprite2D" parent="Spikes"]
-position = Vector2(0, 1)
-scale = Vector2(0.482, 0.482)
-texture = ExtResource("5_eqhkt")
-
-[node name="Enemy" parent="." instance=ExtResource("6_eqhkt")]
-position = Vector2(40, -373)
-
 [node name="Item" parent="." instance=ExtResource("4_8fvae")]
 data = SubResource("Resource_cqabd")
+
+[node name="Entity" parent="." instance=ExtResource("8_cqabd")]
+position = Vector2(-18, -328)
+stats = SubResource("Resource_eoje6")
+stats_modifier = SubResource("Resource_pal4h")
+
+[node name="Player" parent="." instance=ExtResource("5_8fvae")]
+position = Vector2(-505, -278)
+stats = SubResource("Resource_ihrnv")
+stats_modifier = SubResource("Resource_yvokl")

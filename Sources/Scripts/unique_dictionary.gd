@@ -5,9 +5,9 @@ class_name UniqueDictionary
 signal on_add_object(object: UniqueObject)
 signal on_remove_object(object: UniqueObject)
 
-var _dict: Dictionary[String, Variant]
+var _dict: Dictionary[Variant, Variant]
 
-func _init(__dict: Dictionary[String, Variant] = {}):
+func _init(__dict: Dictionary[Variant, Variant] = {}):
 	_dict = __dict
 
 func _get_object(id: String) -> UniqueObject:

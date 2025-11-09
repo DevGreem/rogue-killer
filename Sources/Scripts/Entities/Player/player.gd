@@ -1,15 +1,12 @@
-extends CharacterBody2D
-
-@export var speed: float
-@onready var entity: CharacterBody2D = get_parent()
+extends Entity
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	var real_speed = speed
+	var real_speed = stats.walk_speed
 	
 	# Si el personaje esta corriendo, modifica la velocidad
 	if is_running(delta):
-		real_speed *= entity.stats.stamine.run_speed.modifier
+		real_speed *= stats.run_speed
 	
 	# Cambia la velocidad del personaje
 	velocity.x = UserInput.get_axis().x * real_speed * delta
@@ -22,29 +19,28 @@ func is_running(delta: float) -> bool:
 	
 	# Si la recarga de energia es igual a su valor maximo
 	# Empieza a recarga la energia
-	entity.get_stat()
-	if entity.stats.stamine.reload.min_value == entity.stats.stamine.reload.max_value:
-		# delta se multiplica por el modificador de velocidad de recarga, para que sea mas o menos rapido
-		entity.stats.stamine.duration.min_value += delta*entity.stats.stamine.reload_speed.modifier
+	if stats.stamine.reload.current == stats.stamine.reload.max_value:
+		# Se suma delta para que concuerde con el tiempo
+		stats.stamine.duration.current += delta
 	
 	# Si esta presionando el shift, hace que el personaje corra
 	if Input.is_key_pressed(KEY_SHIFT):
 		
 		# Si la duracion de la energia es <= 0, no corre
-		if entity.stats.stamine.duration.min_value <= 0:
+		if stats.stamine.duration.current <= 0:
 			return false
 		
-		print(entity.stats.stamine.duration)
+		print(stats.stamine.duration)
 		
 		# Si corre, elimina el tiempo en el que esta corriendo a la duracion
 		# Para bajar la cantidad de energia faltante
-		entity.stats.stamine.duration.min_value -= delta
+		stats.stamine.duration.current -= delta
 		# El tiempo de espera de recarga de la energia vuelve a 0
-		entity.stats.stamine.reload.min_value = 0
+		stats.stamine.reload.current = 0
 		return true
 	
 	# Si no corre, vuelve a cargar el tiempo de recarga de la stamina
-	entity.stats.stamine.reload.min_value += delta
+	stats.stamine.reload.current += delta
 	return false
 
 func _input(event):
