@@ -25,6 +25,7 @@ Preferences="*res://Sources/Interfaces/Configs/IPreferences.gd"
 UserInput="*res://Sources/Scripts/Singleload/user_input.gd"
 Config="*res://Sources/Scripts/Singleload/configs.gd"
 KeymapManager="*res://Sources/Scripts/Singleload/keymap_manager.gd"
+Enums="*res://Sources/Scripts/Singleload/enums.gd"
 
 [display]
 
@@ -63,6 +64,15 @@ Attack={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
 ]
 }
+
+[layer_names]
+
+2d_render/layer_1="Movement"
+2d_render/layer_2="GetItems"
+2d_render/layer_3="Combat"
+2d_physics/layer_1="Movement"
+2d_physics/layer_2="GetItems"
+2d_physics/layer_3="Combat"
 
 [rendering]
 

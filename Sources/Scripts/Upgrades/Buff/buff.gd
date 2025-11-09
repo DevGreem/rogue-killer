@@ -3,44 +3,51 @@ extends Upgrade
 class_name Buff
 
 ## Señal que se ejecuta cuando un buff pierde el timer
-signal on_lose
+signal expired
+signal actual_time_changed(before: float, now: float)
+signal max_time_changed(before: float, now: float)
+signal reduce_state_changed(state: bool)
 
-## Duracion del buffo, min_value es la duracion actual
-var duration: IRange
+## Duracion actual de buffo
+@export var actual_duration: float:
+	set(value):
+		
+		var old_time := actual_duration
+		
+		actual_duration = clamp(value, 0, max_duration)
+		
+		actual_time_changed.emit(old_time, actual_duration)
+
+## Duracion maxima del buffo
+@export var max_duration: float:
+	set(value):
+		var old_time = max_duration
+		
+		max_duration = value
+		
+		max_time_changed.emit(old_time, max_duration)
+		actual_duration = clamp(actual_duration, 0, max_duration)
 
 ## Se usa para ver si reduce o no el tiempo
-var reduce: bool = true
+var reduce: bool = true:
+	set(value):
+		reduce = value
+		reduce_state_changed.emit(value)
 
-func _init(_duration: IRange, _reduce: bool = true):
+func _init(_actual_duration: float, _max_duration: float, _reduce: bool = true):
 
-	duration = _duration
+	actual_duration = _actual_duration
+	max_duration = _max_duration
 	reduce = _reduce
 
 func _process(delta: float) -> void:
 	
 	if reduce:
 		# Reduce la duracion actual
-		duration.min_value -= delta
+		actual_duration -= delta
 	
-	if duration.min_value <= 0:
+	if actual_duration <= 0:
 		# Al perder el buff, emite una señal de que ya se perdio.
-		on_lose.emit(true)
+		expired.emit()
 		# Se libera de la memoria y se elimina
-		self.free()
-
-func add_duration(value: float) -> void:
-	
-	
-	var sum_value = duration.min_value + value
-	
-	# Si max_value es -1 significa que no tiene tiempo limite
-	if duration.max_value != -1:
-		
-		# Si sum_value se pasa del limite, elige el limite
-		duration.min_value = min(duration.max_value, sum_value)
-		return
-	
-	duration.min_value = sum_value
-
-func add_max_duration(value: float) -> void:
-	duration.max_value += value
+		self.queue_free()
