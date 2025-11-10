@@ -2,15 +2,15 @@ extends Node
 
 class_name UniqueDictionary
 
-signal on_add_object(object: UniqueObject)
-signal on_remove_object(object: UniqueObject)
+signal on_add_object(object: UniqueData)
+signal on_remove_object(object: UniqueData)
 
 var _dict: Dictionary[Variant, Variant]
 
 func _init(__dict: Dictionary[Variant, Variant] = {}):
 	_dict = __dict
 
-func _get_object(id: String) -> UniqueObject:
+func _get_object(id: String) -> UniqueData:
 	
 	var value = _dict.get(id)
 	
@@ -20,7 +20,7 @@ func _get_object(id: String) -> UniqueObject:
 		
 	return value
 
-func _add_object(object: UniqueObject) -> void:
+func _add_object(object: UniqueData) -> void:
 	_dict[object.ID] = object
 	
 	on_add_object.emit(object)

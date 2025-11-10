@@ -17,15 +17,15 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-ClassManager="*res://Sources/Scripts/Singleload/class_manager.gd"
-FileManager="*res://Sources/Scripts/Singleload/file_manager.gd"
-JsonManager="*res://Sources/Scripts/Singleload/json_manager.gd"
-SceneManager="*res://Sources/Scripts/Singleload/scene_manager.gd"
-Preferences="*res://Sources/Interfaces/Configs/IPreferences.gd"
+ClassManager="*res://Sources/Scripts/Singleload/Managers/class_manager.gd"
+FileManager="*res://Sources/Scripts/Singleload/Managers/file_manager.gd"
+JsonManager="*res://Sources/Scripts/Singleload/Managers/json_manager.gd"
+SceneManager="*res://Sources/Scripts/Singleload/Managers/scene_manager.gd"
 UserInput="*res://Sources/Scripts/Singleload/user_input.gd"
 Config="*res://Sources/Scripts/Singleload/configs.gd"
-KeymapManager="*res://Sources/Scripts/Singleload/keymap_manager.gd"
+KeymapManager="*res://Sources/Scripts/Singleload/Managers/keymap_manager.gd"
 Enums="*res://Sources/Scripts/Singleload/enums.gd"
+Constants="*res://Sources/Scripts/Singleload/constants.gd"
 
 [display]
 
@@ -36,6 +36,10 @@ window/stretch/mode="canvas_items"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
+
+[global_group]
+
+Entities="Group for entities of the game"
 
 [input]
 
