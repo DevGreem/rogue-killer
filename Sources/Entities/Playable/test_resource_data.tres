@@ -1,0 +1,75 @@
+[gd_resource type="Resource" script_class="EntityData" load_steps=21 format=3 uid="uid://mrv8dswidryc"]
+
+[ext_resource type="Script" uid="uid://ceuqlpqhqkbd6" path="res://Data/Upgrades/BuffData.gd" id="1_16jcm"]
+[ext_resource type="Script" uid="uid://yvj56vp6il2f" path="res://Data/Upgrades/UpgradeData.gd" id="2_1yuwc"]
+[ext_resource type="Script" uid="uid://xmk8esu882j1" path="res://Data/Entities/EntityData.gd" id="3_ier6j"]
+[ext_resource type="Script" uid="uid://c1wq3hpquy4nc" path="res://Data/Ranges/RangeData.gd" id="4_ab2h0"]
+[ext_resource type="Script" uid="uid://ekwsloahgfjm" path="res://Data/Ranges/Time/LimitedData.gd" id="5_142k6"]
+[ext_resource type="Script" uid="uid://b5hdqmu0sfo6r" path="res://Data/Stats/EntityStatData.gd" id="6_emt8t"]
+[ext_resource type="Script" uid="uid://cxb0t8qmu15xx" path="res://Data/Stats/StamineData.gd" id="7_fr8s3"]
+[ext_resource type="Script" uid="uid://qdqpr313hhlo" path="res://Data/Ranges/Time/TimerData.gd" id="7_ier6j"]
+[ext_resource type="Script" uid="uid://clckslbeli8df" path="res://Data/Stats/StatModifier.gd" id="8_6met3"]
+[ext_resource type="Script" uid="uid://buuuhyxium7fw" path="res://Data/Ranges/Time/TemporizerData.gd" id="8_ab2h0"]
+[ext_resource type="Script" uid="uid://16kgqw8lliyj" path="res://Data/Stats/StatsModifierData.gd" id="9_nd412"]
+[ext_resource type="Texture2D" uid="uid://o4tudvtudvh4" path="res://Assets/Textures/Tests/Greem3-1p.png" id="10_jn0eh"]
+
+[sub_resource type="Resource" id="Resource_wdhlc"]
+script = ExtResource("4_ab2h0")
+min_value = 1.0
+max_value = 5.0
+metadata/_custom_type_script = "uid://c1wq3hpquy4nc"
+
+[sub_resource type="Resource" id="Resource_pg7t7"]
+script = ExtResource("5_142k6")
+current_value = 1.0
+max_value = 1.0
+metadata/_custom_type_script = "uid://ekwsloahgfjm"
+
+[sub_resource type="Resource" id="Resource_ier6j"]
+script = ExtResource("7_ier6j")
+current_value = 5.0
+min_value = null
+max_value = 5.0
+metadata/_custom_type_script = "uid://qdqpr313hhlo"
+
+[sub_resource type="Resource" id="Resource_ab2h0"]
+script = ExtResource("8_ab2h0")
+current_value = 2.0
+max_value = 2.0
+metadata/_custom_type_script = "uid://buuuhyxium7fw"
+
+[sub_resource type="Resource" id="Resource_1is2y"]
+script = ExtResource("7_fr8s3")
+duration = SubResource("Resource_ier6j")
+reload = SubResource("Resource_ab2h0")
+metadata/_custom_type_script = "uid://cxb0t8qmu15xx"
+
+[sub_resource type="Resource" id="Resource_oe1c2"]
+script = ExtResource("6_emt8t")
+health = SubResource("Resource_pg7t7")
+damage = SubResource("Resource_wdhlc")
+stamine = SubResource("Resource_1is2y")
+run_speed = 2.0
+metadata/_custom_type_script = "uid://b5hdqmu0sfo6r"
+
+[sub_resource type="Resource" id="Resource_n2l7h"]
+script = ExtResource("9_nd412")
+metadata/_custom_type_script = "uid://16kgqw8lliyj"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bpmh0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_jn0eh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("3_ier6j")
+stats = SubResource("Resource_oe1c2")
+stats_modifier = SubResource("Resource_n2l7h")
+texture = SubResource("SpriteFrames_bpmh0")
+metadata/_custom_type_script = "uid://xmk8esu882j1"

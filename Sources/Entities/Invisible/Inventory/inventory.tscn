@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfmok4qumyu52"]
+
+[ext_resource type="Script" uid="uid://dmokrp31cr8u7" path="res://Sources/Entities/Invisible/Inventory/inventory_component.gd" id="1_4r54a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5aqx0"]
+size = Vector2(257, 280)
+
+[node name="Inventory" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_4r54a")
+
+[node name="InventoryCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_5aqx0")
+debug_color = Color(0.645573, 0.5191611, 0.16423756, 0.41960785)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
