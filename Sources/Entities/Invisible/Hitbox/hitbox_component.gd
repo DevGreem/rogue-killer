@@ -4,14 +4,13 @@ class_name HitboxComponent
 
 signal on_attack
 signal on_hit(body: Node2D)
+signal on_finish
 
 @export var can_damage_self: bool = false
 
-func _ready():
-	on_attack.emit()
-	print("Atacando!")
-
 func _on_body_entered(body: Node2D) -> void:
+	
+	on_attack.emit()
 	
 	if not body.is_in_group("Entities"):
 		return
@@ -20,4 +19,9 @@ func _on_body_entered(body: Node2D) -> void:
 		return
 	
 	on_hit.emit(body)
-	print("Hitted body: ", body)
+
+func stop(time := 0.0):
+	
+	await get_tree().create_timer(time).timeout
+	on_finish.emit()
+	queue_free()

@@ -1,0 +1,3 @@
+extends EntityAttackingAttackState
+
+class_name PlayerAttackingAttackState

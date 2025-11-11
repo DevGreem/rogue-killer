@@ -8,29 +8,54 @@ class_name Entity
 @onready var collision: CollisionShape2D = $EntityCollision
 
 func _ready():
-	sprite.sprite_frames = data.texture
-	sprite.animation = "default"
-	sprite.play()
+	if sprite:
+		sprite.sprite_frames = data.texture
+		sprite.animation = "default"
+		sprite.play()
+	
+	#prints("Current stamine:", data.stats.stamine.duration.current_value, "\nMax Stamine:", data.stats.stamine.duration.max_value)
 
-func perform_attack():
-	var hitbox: HitboxComponent = SceneManager.add_entity("Invisible/Hitbox/hitbox_component", self)
-	
-	hitbox.on_attack.connect(_on_attack)
-	hitbox.on_hit.connect(_on_hit)
-	
-	var shape = collision.shape
-	if shape is RectangleShape2D:
-		hitbox.position.x += shape.size.x
-	
-	await get_tree().create_timer(1).timeout
-	hitbox.queue_free()
+#region STAMINE METHODS
 
-func receive_attack(damage: float):
-	print("Received damage: ", damage)
-	data.stats.health.current_value -= damage
+## Recarga la energia del jugador
+func reload_stamine(delta: float) -> void:
 	
-	if data.stats.health.current_value <= 0:
-		die()
+	var stamine := data.stats.stamine
+	
+	# Verifica si la recarga de energia ya esta completa.
+	# Si la recarga de energia es igual al maximo, significa que ya esta completa
+	if !stamine.reload.is_active():
+		
+		# Recarga la duracion de la energia hasta su limite
+		stamine.duration.current_value += delta
+		#prints("Recargando stamina:", stamine.duration.current_value)
+		return
+	
+	# Si no esta completa, recarga la recarga de energia
+	stamine.reload.tick(delta)
+	#prints("Recargando recarga de stamina:", stamine.reload.current_value)
+
+## Consume la energia del jugador
+func consume_stamine(delta: float):
+	var stamine := data.stats.stamine
+	#prints("Duration:",stamine.duration.current_value,"\nReload:", stamine.reload.current_value)
+	
+	# Reduce la duracion de la energia
+	stamine.duration.tick(delta)
+	#prints("Consumiendo stamina:", delta)
+		
+	# El tiempo de espera de recarga de la energia vuelve a 0
+	# Esto es porque cuando consume energia, tiene que volver a esperar para recargarla.
+	stamine.reload.current_value = 0
+
+## Verifica si el jugador tiene energia
+func has_stamine() -> bool:
+	
+	var can_run := data.stats.stamine.duration.is_active()
+	
+	return can_run
+
+#endregion
 
 func die() -> void:
 	queue_free()
@@ -42,3 +67,10 @@ func _on_hit(body: Entity):
 	
 	var damage := data.stats.damage.random_float()
 	body.receive_attack(damage)
+
+func receive_attack(damage: float):
+	#print("Received damage: ", damage)
+	data.stats.health.current_value -= damage
+	
+	if data.stats.health.current_value <= 0:
+		die()
