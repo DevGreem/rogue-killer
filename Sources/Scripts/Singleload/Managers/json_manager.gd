@@ -64,7 +64,7 @@ func json_to_class(json: Dictionary, obj: Object, to_key = null) -> void:
 		
 		var value = json[key]
 		
-		print("Key: ", key, "\nValue: ", value, "\n\n")
+		#print("Key: ", key, "\nValue: ", value, "\n\n")
 		
 		if typeof(value) == TYPE_DICTIONARY:
 			

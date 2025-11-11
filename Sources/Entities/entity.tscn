@@ -1,8 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://k2jgv743f113"]
+[gd_scene load_steps=14 format=3 uid="uid://k2jgv743f113"]
 
 [ext_resource type="Script" uid="uid://csnm62h4kqd4m" path="res://Sources/Scripts/Entities/entity.gd" id="1_1qomt"]
 [ext_resource type="Script" uid="uid://dmokrp31cr8u7" path="res://Sources/Entities/Invisible/Inventory/inventory_component.gd" id="3_w5jb3"]
+[ext_resource type="Script" uid="uid://dvhes8j010co" path="res://Sources/Scripts/StateMachine/state_machine.gd" id="4_1qomt"]
+[ext_resource type="Script" uid="uid://bgovd7ncdr6h6" path="res://Sources/Scripts/Entities/States/Movement/idle.gd" id="5_7e7px"]
+[ext_resource type="Script" uid="uid://cykr42btugn2j" path="res://Sources/Scripts/Entities/States/Attack/idle.gd" id="5_54if2"]
 [ext_resource type="Script" uid="uid://bd1it0wr4if4i" path="res://Sources/Entities/Invisible/Health/health_component.gd" id="5_gd86y"]
+[ext_resource type="Script" uid="uid://dc0xiyiuhhmwv" path="res://Sources/Scripts/Entities/States/Attack/attacking.gd" id="6_cbr6d"]
+[ext_resource type="Script" uid="uid://d186b3b8sj42s" path="res://Sources/Scripts/Entities/States/Movement/running.gd" id="6_lt4af"]
+[ext_resource type="Script" uid="uid://cv736vksipnhr" path="res://Sources/Scripts/Entities/States/Movement/walking.gd" id="6_w5jb3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0q7ho"]
 
@@ -44,6 +50,31 @@ script = ExtResource("5_gd86y")
 position = Vector2(6, 2)
 shape = SubResource("RectangleShape2D_a7als")
 debug_color = Color(0, 1, 0.21568628, 0.41960785)
+
+[node name="AttackStateMachine" type="Node" parent="." node_paths=PackedStringArray("default_state")]
+script = ExtResource("4_1qomt")
+default_state = NodePath("../MovementStateMachine/Idle")
+metadata/_custom_type_script = "uid://dvhes8j010co"
+
+[node name="Idle" type="Node" parent="AttackStateMachine"]
+script = ExtResource("5_54if2")
+
+[node name="Attacking" type="Node" parent="AttackStateMachine"]
+script = ExtResource("6_cbr6d")
+
+[node name="MovementStateMachine" type="Node" parent="." node_paths=PackedStringArray("default_state")]
+script = ExtResource("4_1qomt")
+default_state = NodePath("Idle")
+metadata/_custom_type_script = "uid://dvhes8j010co"
+
+[node name="Idle" type="Node" parent="MovementStateMachine"]
+script = ExtResource("5_7e7px")
+
+[node name="Walking" type="Node" parent="MovementStateMachine"]
+script = ExtResource("6_w5jb3")
+
+[node name="Running" type="Node" parent="MovementStateMachine"]
+script = ExtResource("6_lt4af")
 
 [connection signal="area_entered" from="Inventory" to="Inventory" method="_on_area_entered"]
 [connection signal="on_dead" from="HealthComponent" to="." method="_on_dead"]

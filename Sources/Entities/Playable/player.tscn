@@ -1,9 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0e0vpnyrhhvg"]
+[gd_scene load_steps=7 format=3 uid="uid://c0e0vpnyrhhvg"]
 
 [ext_resource type="PackedScene" uid="uid://k2jgv743f113" path="res://Sources/Entities/entity.tscn" id="1_2bfm8"]
-[ext_resource type="Script" uid="uid://daa8uc0h1svdw" path="res://Sources/Entities/Playable/player.gd" id="2_q58by"]
+[ext_resource type="Script" uid="uid://dakhlqpd2xjbd" path="res://Sources/Entities/Playable/States/Attack/idle.gd" id="2_2bfm8"]
+[ext_resource type="Script" uid="uid://daa8uc0h1svdw" path="res://Sources/Entities/Playable/player.gd" id="2_rfji8"]
+[ext_resource type="Script" uid="uid://m6dygaxmbcf" path="res://Sources/Entities/Playable/States/Movement/idle.gd" id="3_lem8c"]
+[ext_resource type="Script" uid="uid://bb1g4slekj71x" path="res://Sources/Entities/Playable/States/Movement/walking.gd" id="4_rfji8"]
+[ext_resource type="Script" uid="uid://to0ych1b5fcb" path="res://Sources/Entities/Playable/States/Movement/running.gd" id="4_xhbxa"]
 
 [node name="Player" instance=ExtResource("1_2bfm8")]
-script = ExtResource("2_q58by")
+script = ExtResource("2_rfji8")
 
 [node name="Camera2D" type="Camera2D" parent="." index="0"]
+
+[node name="AttackStateMachine" parent="." index="5" node_paths=PackedStringArray("default_state")]
+default_state = NodePath("Idle")
+
+[node name="Idle" parent="AttackStateMachine" index="0"]
+script = ExtResource("2_2bfm8")
+
+[node name="Idle" parent="MovementStateMachine" index="0"]
+script = ExtResource("3_lem8c")
+
+[node name="Walking" parent="MovementStateMachine" index="1"]
+script = ExtResource("4_rfji8")
+
+[node name="Running" parent="MovementStateMachine" index="2"]
+script = ExtResource("4_xhbxa")

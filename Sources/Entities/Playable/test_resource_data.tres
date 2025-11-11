@@ -28,13 +28,11 @@ metadata/_custom_type_script = "uid://ekwsloahgfjm"
 [sub_resource type="Resource" id="Resource_ier6j"]
 script = ExtResource("7_ier6j")
 current_value = 5.0
-min_value = null
 max_value = 5.0
 metadata/_custom_type_script = "uid://qdqpr313hhlo"
 
 [sub_resource type="Resource" id="Resource_ab2h0"]
 script = ExtResource("8_ab2h0")
-current_value = 2.0
 max_value = 2.0
 metadata/_custom_type_script = "uid://buuuhyxium7fw"
 

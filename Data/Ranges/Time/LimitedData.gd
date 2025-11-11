@@ -1,3 +1,4 @@
+@tool
 extends RangeData
 
 class_name LimitedData
@@ -10,6 +11,7 @@ var _current_value := 0.0
 	get:
 		return _get_current_value()
 	set(value):
+		#prints("Real current value:",_current_value)
 		_set_current_value(value)
 
 func _init() -> void:

@@ -1,7 +1,11 @@
-@abstract class_name TimedData extends LimitedData
+@tool
+@warning_ignore('missing_tool')
+
+@abstract
+class_name TimedData extends LimitedData
 
 @warning_ignore("unused_signal")
-signal expired()
+signal expired
 
 @export var stopped := false
 

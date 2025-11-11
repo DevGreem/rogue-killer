@@ -34,7 +34,7 @@ func save_item(item: Item) -> void:
 		inventory[item.data.ID].stack.min_value += 1
 		return
 	
-	print("Added item: ", item.name)
+	#print("Added item: ", item.name)
 	inventory[item.data.ID] = item
 
 ## Elimina un item del inventario
@@ -43,7 +43,7 @@ func drop_item_by_id(id: String) -> void:
 
 ## Al entrar al area de un item, lo recoge
 func _on_area_entered(area: Area2D) -> void:
-	print(area.name)
+	#print(area.name)
 	
 	if area is Item:
 		save_item(area)
