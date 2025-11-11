@@ -70,5 +70,4 @@ data = ExtResource("12_uu33h")
 
 [node name="Player" parent="." instance=ExtResource("11_eoje6")]
 position = Vector2(882, -285)
-rotation = -3.9642513
 data = ExtResource("12_uu33h")

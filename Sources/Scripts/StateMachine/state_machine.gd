@@ -61,7 +61,7 @@ func state_has_method(method_name: String, ...args):
 
 #endregion
 
-#region Process Section
+#region Methodswwwwwwwwwwwdsaaaaaaaaaaaassdw Section
 
 func _process(delta: float) -> void:
 	state_has_method("_on_process", delta)

@@ -15,19 +15,16 @@
 
 [sub_resource type="Resource" id="Resource_wdhlc"]
 script = ExtResource("4_ab2h0")
-min_value = 1.0
 max_value = 5.0
 metadata/_custom_type_script = "uid://c1wq3hpquy4nc"
 
 [sub_resource type="Resource" id="Resource_pg7t7"]
 script = ExtResource("5_142k6")
-current_value = 1.0
 max_value = 1.0
 metadata/_custom_type_script = "uid://ekwsloahgfjm"
 
 [sub_resource type="Resource" id="Resource_ier6j"]
 script = ExtResource("7_ier6j")
-current_value = 5.0
 max_value = 5.0
 metadata/_custom_type_script = "uid://qdqpr313hhlo"
 
