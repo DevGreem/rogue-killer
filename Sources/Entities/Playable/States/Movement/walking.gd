@@ -7,11 +7,11 @@ func _on_physics_process(delta: float):
 	
 	var axis := UserInput.get_axis()
 	
-	var walk_speed := entity.data.stats.walk_speed
+	var walk_speed := entity.data.stats.speed.walking
 	
 	# Cambia la velocidad del jugador para que se mueva
-	entity.velocity.x = axis.x * delta * walk_speed
-	entity.velocity.y = axis.y * delta * -walk_speed
+	entity.velocity.x = axis.x * walk_speed
+	entity.velocity.y = axis.y * -walk_speed
 	
 	entity.move_and_slide()
 	entity.reload_stamine(delta)

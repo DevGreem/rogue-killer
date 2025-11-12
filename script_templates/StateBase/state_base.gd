@@ -2,7 +2,7 @@
 
 extends StateBase
 
-class_name _BASE_
+class_name _CLASS_
 
 func start():
 	pass

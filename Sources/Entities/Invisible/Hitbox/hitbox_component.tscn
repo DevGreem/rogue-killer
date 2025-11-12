@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cm3n8sirs318w"]
+[gd_scene load_steps=3 format=3 uid="uid://b8jbmqcwfqaxq"]
 
-[ext_resource type="Script" uid="uid://cma12r3ug0fkc" path="res://Sources/Entities/Invisible/Hitbox/hitbox_component.gd" id="1_oqc3s"]
+[ext_resource type="Script" uid="uid://dr32pa31dwy17" path="res://Sources/Entities/Invisible/Hitbox/hitbox_component.gd" id="1_oqc3s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0lyjm"]
 size = Vector2(220, 260)

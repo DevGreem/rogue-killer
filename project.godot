@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+Constants="*res://Sources/Scripts/Singleload/constants.gd"
 ClassManager="*res://Sources/Scripts/Singleload/Managers/class_manager.gd"
 FileManager="*res://Sources/Scripts/Singleload/Managers/file_manager.gd"
 JsonManager="*res://Sources/Scripts/Singleload/Managers/json_manager.gd"
@@ -25,7 +26,6 @@ UserInput="*res://Sources/Scripts/Singleload/user_input.gd"
 Config="*res://Sources/Scripts/Singleload/configs.gd"
 KeymapManager="*res://Sources/Scripts/Singleload/Managers/keymap_manager.gd"
 Enums="*res://Sources/Scripts/Singleload/enums.gd"
-Constants="*res://Sources/Scripts/Singleload/constants.gd"
 Utilities="*res://Sources/Scripts/Singleload/utilities.gd"
 
 [display]

@@ -12,9 +12,8 @@ func start():
 		entity.data.stats.stamine.duration.expired,
 		_on_tired
 	)
-
-func end():
-	pass
+	
+	super.start()
 
 func _on_physics_process(delta: float) -> void:
 	entity.consume_stamine(delta)

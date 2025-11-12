@@ -6,6 +6,8 @@ var entity: Entity
 
 func start():
 	entity = state_owner
+	
+	super.start()
 
 func end():
 	pass

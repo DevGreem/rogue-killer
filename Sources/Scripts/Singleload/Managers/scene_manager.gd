@@ -1,14 +1,33 @@
 extends Node
 
-const SCENES_PATH := "res://Sources/Scenes/"
-const ENTITIES_PATH := "res://Sources/Entities/"
+#region GETs
 
 ## Consigue el nombre de una escena
 func get_scene_path(scene_name: String) -> String:
 	
-	var scene_path := SCENES_PATH+"{name}/{name}.tscn".format({"name":scene_name})
+	var scene_path := Constants.SCENES_PATH+"{name}/{name}.tscn".format({"name":scene_name})
 	
 	return scene_path
+
+func get_entity_path(entity_path: String) -> String:
+	var entity := Constants.ENTITIES_PATH+"{name}.tscn".format({"name":entity_path})
+	
+	return entity
+
+func get_item_path(item_path: String) -> String:
+	
+	var item := Constants.ITEMS_PATH+"{name}/{name}.tres".format({"name":item_path})
+	
+	return item
+
+func get_scene(path: String) -> Node:
+	var loaded_scene := load(path)
+	
+	var instantiated_scene = loaded_scene.instantiate()
+	
+	return instantiated_scene
+
+#endregion
 
 ## Cambia a otra escena
 func to_scene(scene: String) -> void:
@@ -18,9 +37,7 @@ func to_scene(scene: String) -> void:
 ## Añade una escena segun el path
 func add_scene(path: String, obj: Node = null) -> Object:
 	
-	var loaded_scene: PackedScene = load(path)
-	
-	var instantiated_scene = loaded_scene.instantiate()
+	var instantiated_scene = get_scene(path)
 	
 	if obj:
 		obj.add_child(instantiated_scene)
@@ -33,11 +50,17 @@ func add_scene(path: String, obj: Node = null) -> Object:
 func add_subscene(scene_name: String, obj: Node = null) -> PackedScene:
 	return add_scene(get_scene_path(scene_name), obj)
 
-func get_entity_path(entity_path: String) -> String:
-	var entity := ENTITIES_PATH+"{name}.tscn".format({"name":entity_path})
-	
-	return entity
-
 ## Añade una entidad a una escena (Tiene que poner la ruta de archivos)
 func add_entity(entity_name: String, obj: Node = null) -> Object:
 	return add_scene(get_entity_path(entity_name), obj)
+
+func add_item(item_name: String) -> Item:
+	
+	var loaded_data: Resource = load(get_item_path(item_name))
+	
+	var item: Item = get_scene(Constants.ITEMS_PATH+"item.tscn")
+	
+	item.data = loaded_data
+	item.name = loaded_data.resource_name
+	
+	return item

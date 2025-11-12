@@ -4,5 +4,15 @@
 
 var state_machine: StateMachine
 
-@abstract func start()
-@abstract func end()
+@warning_ignore('unused_signal')
+signal on_start
+
+@warning_ignore('unused_signal')
+signal on_end
+
+@warning_ignore('unused_parameter')
+func start() -> void:
+	on_start.emit()
+	
+func end() -> void:
+	on_end.emit()

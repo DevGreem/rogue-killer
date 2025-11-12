@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=7 format=3 uid="uid://cf45i8ux3adfs"]
+
+[ext_resource type="Script" uid="uid://cd814yssmiyd8" path="res://Data/Items/ItemData.gd" id="1_iro5b"]
+[ext_resource type="Script" uid="uid://clckslbeli8df" path="res://Data/Stats/StatModifier.gd" id="2_oefim"]
+[ext_resource type="Script" uid="uid://16kgqw8lliyj" path="res://Data/Stats/StatsModifierData.gd" id="3_8ywe4"]
+[ext_resource type="Texture2D" uid="uid://cb2n8pmfr1ami" path="res://Assets/Textures/Tests/spikes.png" id="4_4tyn5"]
+
+[sub_resource type="Resource" id="Resource_hqxbe"]
+script = ExtResource("3_8ywe4")
+metadata/_custom_type_script = "uid://16kgqw8lliyj"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nygv1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_4tyn5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_iro5b")
+texture = SubResource("SpriteFrames_nygv1")
+stats = SubResource("Resource_hqxbe")
+description = "Test Item"
+ID = "TestItem1"
+metadata/_custom_type_script = "uid://cd814yssmiyd8"

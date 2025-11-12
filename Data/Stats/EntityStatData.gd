@@ -14,5 +14,4 @@ class_name EntityStatData
 @export var stamine: StamineData
 
 @export_category("Speed")
-@export var walk_speed: float = 10000
-@export var run_speed: float = 1.0
+@export var speed: SpeedData

@@ -1,0 +1,47 @@
+[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://dda4xh8dxsb3o"]
+
+[ext_resource type="Texture2D" uid="uid://cksj2jlwir7b8" path="res://Assets/Textures/Tests/test_tiles.png" id="1_jxu6p"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jxu6p"]
+friction = 0.85
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_jxu6p"]
+vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_xrgcq"]
+vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+agent_radius = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8fvae"]
+texture = ExtResource("1_jxu6p")
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jxu6p")
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrain = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0/terrains_peering_bit/right_side = 0
+2:0/0/terrains_peering_bit/bottom_right_corner = 0
+2:0/0/terrains_peering_bit/bottom_side = 0
+2:0/0/terrains_peering_bit/bottom_left_corner = 0
+2:0/0/terrains_peering_bit/left_side = 0
+2:0/0/terrains_peering_bit/top_left_corner = 0
+2:0/0/terrains_peering_bit/top_side = 0
+2:0/0/terrains_peering_bit/top_right_corner = 0
+2:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_xrgcq")
+
+[resource]
+physics_layer_0/collision_layer = 0
+physics_layer_0/physics_material = SubResource("PhysicsMaterial_jxu6p")
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Wall"
+terrain_set_0/terrain_0/color = Color(0.5874115, 0.0065179626, 0.72701406, 1)
+navigation_layer_0/layers = 1
+sources/0 = SubResource("TileSetAtlasSource_8fvae")

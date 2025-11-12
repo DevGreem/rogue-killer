@@ -44,6 +44,7 @@ script = ExtResource("6_emt8t")
 health = SubResource("Resource_pg7t7")
 damage = SubResource("Resource_wdhlc")
 stamine = SubResource("Resource_1is2y")
+walk_speed = 300.0
 run_speed = 2.0
 metadata/_custom_type_script = "uid://b5hdqmu0sfo6r"
 

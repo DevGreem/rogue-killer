@@ -13,6 +13,7 @@ func start():
 	player.velocity.y = 0
 	
 	player.move_and_slide()
+	super.start()
 
 func _on_physics_process(delta: float):
 	

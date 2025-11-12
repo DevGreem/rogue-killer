@@ -12,7 +12,7 @@ script = ExtResource("2_rfji8")
 
 [node name="Camera2D" type="Camera2D" parent="." index="0"]
 
-[node name="AttackStateMachine" parent="." index="5" node_paths=PackedStringArray("default_state")]
+[node name="AttackStateMachine" parent="." index="4" node_paths=PackedStringArray("default_state")]
 default_state = NodePath("Idle")
 
 [node name="Idle" parent="AttackStateMachine" index="0"]

@@ -8,10 +8,12 @@ class_name Entity
 @onready var collision: CollisionShape2D = $EntityCollision
 
 func _ready():
-	if sprite:
-		sprite.sprite_frames = data.texture
-		sprite.animation = "default"
-		sprite.play()
+	if data and sprite:
+		
+		if data.texture:
+			sprite.sprite_frames = data.texture
+			sprite.animation = "default"
+			sprite.play()
 	
 	#prints("Current stamine:", data.stats.stamine.duration.current_value, "\nMax Stamine:", data.stats.stamine.duration.max_value)
 
