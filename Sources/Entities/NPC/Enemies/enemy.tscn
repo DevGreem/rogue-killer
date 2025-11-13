@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bnukgbpr25pxq"]
+[gd_scene load_steps=9 format=3 uid="uid://bnukgbpr25pxq"]
 
 [ext_resource type="PackedScene" uid="uid://k2jgv743f113" path="res://Sources/Entities/entity.tscn" id="1_ycwy2"]
 [ext_resource type="Script" uid="uid://dvhes8j010co" path="res://Sources/Scripts/StateMachine/state_machine.gd" id="2_08r41"]
 [ext_resource type="Script" uid="uid://f4c68erdikq4" path="res://Sources/Entities/NPC/Enemies/enemy.gd" id="2_s3ofe"]
+[ext_resource type="Script" uid="uid://dh1r80yijtmdb" path="res://Sources/Entities/NPC/Enemies/States/Attack/idle.gd" id="3_48lxr"]
 [ext_resource type="Script" uid="uid://do4uxjnbhrbmb" path="res://Sources/Entities/NPC/Enemies/States/AI/idle.gd" id="3_u0re1"]
 [ext_resource type="Script" uid="uid://dtprck883rty7" path="res://Sources/Entities/NPC/Enemies/States/AI/patrol.gd" id="4_0p5co"]
 [ext_resource type="Script" uid="uid://budk61u260i5j" path="res://Sources/Entities/NPC/Enemies/States/AI/chase.gd" id="5_s3ofe"]
@@ -12,6 +13,9 @@ radius = 839.0292
 
 [node name="Enemy" instance=ExtResource("1_ycwy2")]
 script = ExtResource("2_s3ofe")
+
+[node name="Idle" parent="AttackStateMachine" index="0"]
+script = ExtResource("3_48lxr")
 
 [node name="AIStateMachine" type="Node" parent="." index="5" node_paths=PackedStringArray("default_state")]
 script = ExtResource("2_08r41")
@@ -32,6 +36,7 @@ script = ExtResource("5_s3ofe")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" index="0"]
 shape = SubResource("CircleShape2D_48lxr")
 
+[connection signal="on_detect_player" from="AIStateMachine/Patrol" to="AttackStateMachine/Idle" method="_on_detect_player"]
 [connection signal="on_detect_player" from="AIStateMachine/Patrol" to="AIStateMachine/Chase" method="_patrol_on_detect_player"]
 [connection signal="body_entered" from="DetectionArea" to="AIStateMachine/Patrol" method="_on_detect_player"]
 [connection signal="body_exited" from="DetectionArea" to="AIStateMachine/Chase" method="_on_exit_player"]

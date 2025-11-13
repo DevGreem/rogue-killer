@@ -1,0 +1,31 @@
+[gd_resource type="InventoryDatabase" load_steps=5 format=3 uid="uid://cbh4agn0hf6m"]
+
+[ext_resource type="Texture2D" uid="uid://cb2n8pmfr1ami" path="res://assets/Textures/Tests/spikes.png" id="1_nxxc6"]
+
+[sub_resource type="ItemCategory" id="ItemCategory_5keoa"]
+name = "Test"
+color = Color(0.9661458, 0.04780411, 0.04780411, 1)
+item_properties = {
+"test_property": 1
+}
+item_dynamic_properties = Array[String](["test_property"])
+
+[sub_resource type="ItemCategory" id="ItemCategory_aggbj"]
+id = "modifieritem"
+name = "ModifierItem"
+
+[sub_resource type="ItemDefinition" id="ItemDefinition_ioicx"]
+id = "testitem"
+max_stack = 6
+name = "TestItem"
+icon = ExtResource("1_nxxc6")
+properties = {
+"test_property": 1
+}
+dynamic_properties = Array[String](["test_property"])
+categories = Array[ItemCategory]([SubResource("ItemCategory_5keoa")])
+description = "Item para testear"
+
+[resource]
+items = Array[ItemDefinition]([SubResource("ItemDefinition_ioicx")])
+item_categories = Array[ItemCategory]([SubResource("ItemCategory_5keoa"), SubResource("ItemCategory_aggbj")])

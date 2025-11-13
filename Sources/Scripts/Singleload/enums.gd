@@ -1,9 +1,10 @@
 extends Node
 
 enum StatType {
-	HEALTH,
-	ATTACK,
-	ATTACK_COOLDOWN,
+	MAX_HEALTH,
+	REGENERATION,
+	MIN_DAMAGE,
+	MAX_DAMAGE,
 	ARMOR,
 	STAMINE,
 	STAMINE_DURATION,
@@ -12,20 +13,14 @@ enum StatType {
 	RUN_SPEED
 }
 
-enum ItemType {
-	SKIN,
-	WEAPON,
-	ARMOR_HEAD,
-	ARMOR_CHEST,
-	ARMOR_FEET,
-	BACKPACK,
-	NON_EQUIPABLE
-}
-
 enum ItemAction {
-	THROWABLE,
-	CAN_USE,
 	CAN_SELL,
 	CAN_DROP,
 	CAN_GRAB
+}
+
+enum ArmorType {
+	ARMOR_HEAD,
+	ARMOR_CHEST,
+	ARMOR_FEET
 }

@@ -6,6 +6,8 @@ class_name Entity
 @export var data: EntityData
 @onready var sprite: AnimatedSprite2D = $Sprite
 @onready var collision: CollisionShape2D = $EntityCollision
+@onready var inventory: GridInventory = $Inventory
+@onready var equipment: GridInventory = $Equipment
 
 func _ready():
 	if data and sprite:
@@ -76,3 +78,6 @@ func receive_attack(damage: float):
 	
 	if data.stats.health.current_value <= 0:
 		die()
+
+func _on_change_backpack():
+	pass

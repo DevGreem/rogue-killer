@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=4 uid="uid://btyur76vdgm06"]
 
-[ext_resource type="TileSet" uid="uid://dda4xh8dxsb3o" path="res://Assets/Textures/Tests/test_tiles.tres" id="1_ni65q"]
+[ext_resource type="TileSet" uid="uid://dda4xh8dxsb3o" path="res://assets/Textures/Tests/test_tiles.tres" id="1_ni65q"]
 [ext_resource type="PackedScene" uid="uid://c0e0vpnyrhhvg" path="res://Sources/Entities/Playable/player.tscn" id="2_217pn"]
-[ext_resource type="Resource" uid="uid://mrv8dswidryc" path="res://Sources/Entities/Playable/test_resource_data.tres" id="3_oq2va"]
+[ext_resource type="Resource" uid="uid://mrv8dswidryc" path="res://Sources/Entities/test_resource_data.tres" id="3_oq2va"]
 [ext_resource type="PackedScene" uid="uid://ci8sviomu31hd" path="res://Sources/Entities/Invisible/ItemSpawn/item_spawn.tscn" id="4_217pn"]
 
 [node name="Shop" type="Node2D"]

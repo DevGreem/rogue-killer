@@ -21,5 +21,7 @@ func _on_physics_process(delta: float) -> void:
 ## Si se expira la duracion de la energia, cambia el estado a Walking
 func _on_tired():
 	#print("Character tired")
+	
+	#TODO: Crear un estado de Exhausted para que no se pueda correr
 	# Cambia el estado a Walking
 	state_machine.set_state($"../Walking")

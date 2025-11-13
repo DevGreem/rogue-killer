@@ -24,7 +24,7 @@ func _on_physics_process(_delta: float):
 	
 	enemy.move_and_slide()
 
-func _on_exit_player(body: Player) -> void:
+func _on_exit_player(body: Node2D) -> void:
 	
 	if not body is Player:
 		return

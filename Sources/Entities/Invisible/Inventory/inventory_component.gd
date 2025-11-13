@@ -7,10 +7,10 @@ class_name InventoryComponent
 
 # TODO: Crear un Resource que se llame Equipment
 ## Equipamiento actual de la entidad
-var equipment
+var equipment: EquipmentData
 
 ## Inventario donde se guardaran objetos
-var inventory: Dictionary[String, Item]:
+var inventory: Dictionary[String, ItemData]:
 	set(value):
 		# Si el nuevo value supera el tamaño limite, no cambia nada y emite una señal
 		if value.size() > max_inventory:
@@ -18,13 +18,9 @@ var inventory: Dictionary[String, Item]:
 		
 		inventory = value
 
-func _init(_inventory: Dictionary[String, Item] = {}, _equipment = null):
+func _init(_inventory: Dictionary[String, ItemData] = {}, _equipment = null):
 	
-	if _equipment:
-		equipment = _equipment
-	else:
-		equipment = null # Por
-	
+	equipment = _equipment
 	inventory = _inventory
 
 ## Guarda un item en el inventario
@@ -35,7 +31,11 @@ func save_item(item: Item) -> void:
 		return
 	
 	#print("Added item: ", item.name)
-	inventory[item.data.ID] = item
+	inventory[item.data.ID] = item.data
+
+func equip_item(item: ItemData) -> void:
+	
+	pass
 
 ## Elimina un item del inventario
 func drop_item_by_id(id: String) -> void:

@@ -1,13 +1,13 @@
 [gd_scene load_steps=11 format=4 uid="uid://cbk8o5batsqd3"]
 
 [ext_resource type="Script" uid="uid://bsume3puh5rj7" path="res://Sources/Scenes/History/history.gd" id="1_h41w0"]
-[ext_resource type="TileSet" uid="uid://dda4xh8dxsb3o" path="res://Assets/Textures/Tests/test_tiles.tres" id="2_cqabd"]
+[ext_resource type="TileSet" uid="uid://dda4xh8dxsb3o" path="res://assets/Textures/Tests/test_tiles.tres" id="2_cqabd"]
 [ext_resource type="PackedScene" uid="uid://bwslnnte5pkmq" path="res://Sources/Items/item.tscn" id="4_8fvae"]
-[ext_resource type="Texture2D" uid="uid://cb2n8pmfr1ami" path="res://Assets/Textures/Tests/spikes.png" id="5_eqhkt"]
+[ext_resource type="Texture2D" uid="uid://cb2n8pmfr1ami" path="res://assets/Textures/Tests/spikes.png" id="5_eqhkt"]
 [ext_resource type="Script" uid="uid://cd814yssmiyd8" path="res://Data/Items/ItemData.gd" id="7_1aqja"]
 [ext_resource type="PackedScene" uid="uid://bnukgbpr25pxq" path="res://Sources/Entities/NPC/Enemies/enemy.tscn" id="8_cqabd"]
 [ext_resource type="PackedScene" uid="uid://c0e0vpnyrhhvg" path="res://Sources/Entities/Playable/player.tscn" id="11_eoje6"]
-[ext_resource type="Resource" uid="uid://mrv8dswidryc" path="res://Sources/Entities/Playable/test_resource_data.tres" id="12_uu33h"]
+[ext_resource type="Resource" uid="uid://mrv8dswidryc" path="res://Sources/Entities/test_resource_data.tres" id="12_uu33h"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cqabd"]
 animations = [{
