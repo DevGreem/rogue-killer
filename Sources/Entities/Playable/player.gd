@@ -3,7 +3,9 @@ extends Entity
 
 class_name Player
 
-func _process(_delta):
+@onready var inventory_ui: GridInventoryUI = $CanvasLayer/InventoryUI
+
+func _input(_event: InputEvent):
 	
 	if Engine.is_editor_hint():
 		return
@@ -11,14 +13,23 @@ func _process(_delta):
 	var mouse_position = get_global_mouse_position()
 	
 	look_at(mouse_position)
-
-#func _input(event):
-	#
-	#if event is InputEventMouse:
-		#
-		#var direction = event.position
-		#
-		#look_at(direction)
+	
+	if Input.is_action_just_pressed("Open-Inventory"):
+		
+		if inventory_ui.visible:
+			inventory_ui.close_inventory()
+		else:
+			inventory_ui.see_inventory()
 
 func _on_dead() -> void:
-	queue_free()
+	die()
+
+func die():
+	var dead_camera := Camera2D.new()
+	
+	dead_camera.name = "Dead Camera"
+	dead_camera.global_position = global_position
+	
+	get_parent().add_child(dead_camera)
+	
+	super.die()

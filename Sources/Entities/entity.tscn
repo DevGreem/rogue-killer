@@ -1,13 +1,17 @@
-[gd_scene load_steps=11 format=3 uid="uid://k2jgv743f113"]
+[gd_scene load_steps=15 format=3 uid="uid://k2jgv743f113"]
 
 [ext_resource type="Script" uid="uid://csnm62h4kqd4m" path="res://Sources/Scripts/Entities/entity.gd" id="1_1qomt"]
+[ext_resource type="Script" uid="uid://dnexavor5fxt5" path="res://Sources/Scripts/Entities/equipment.gd" id="3_cbr6d"]
 [ext_resource type="Script" uid="uid://dvhes8j010co" path="res://Sources/Scripts/StateMachine/state_machine.gd" id="4_1qomt"]
+[ext_resource type="Script" uid="uid://b5wi766a13hav" path="res://Sources/Scripts/Entities/entity_inventory.gd" id="4_fltg1"]
 [ext_resource type="Script" uid="uid://bgovd7ncdr6h6" path="res://Sources/Scripts/Entities/States/Movement/idle.gd" id="5_7e7px"]
 [ext_resource type="Script" uid="uid://cykr42btugn2j" path="res://Sources/Scripts/Entities/States/Attack/idle.gd" id="5_54if2"]
 [ext_resource type="Script" uid="uid://dc0xiyiuhhmwv" path="res://Sources/Scripts/Entities/States/Attack/attacking.gd" id="6_cbr6d"]
 [ext_resource type="Script" uid="uid://d186b3b8sj42s" path="res://Sources/Scripts/Entities/States/Movement/running.gd" id="6_lt4af"]
 [ext_resource type="Script" uid="uid://cv736vksipnhr" path="res://Sources/Scripts/Entities/States/Movement/walking.gd" id="6_w5jb3"]
+[ext_resource type="Script" uid="uid://oorss4vcybuk" path="res://Sources/Scripts/Entities/States/Movement/exhausted_idle.gd" id="7_54if2"]
 [ext_resource type="InventoryDatabase" uid="uid://cbh4agn0hf6m" path="res://Sources/Items/database.tres" id="8_1qomt"]
+[ext_resource type="Script" uid="uid://ckkipvip5k7t7" path="res://Sources/Scripts/Entities/States/Movement/exhausted.gd" id="8_gd86y"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0q7ho"]
 
@@ -25,11 +29,15 @@ position = Vector2(-6.1035156e-05, -1.6393127)
 shape = SubResource("RectangleShape2D_aop4j")
 
 [node name="Equipment" type="GridInventory" parent="."]
-size = Vector2i(1, 4)
+size = Vector2i(2, 4)
 database = ExtResource("8_1qomt")
+script = ExtResource("3_cbr6d")
+metadata/_custom_type_script = "uid://dnexavor5fxt5"
 
 [node name="Inventory" type="GridInventory" parent="."]
 database = ExtResource("8_1qomt")
+script = ExtResource("4_fltg1")
+metadata/_custom_type_script = "uid://b5wi766a13hav"
 
 [node name="AttackStateMachine" type="Node" parent="." node_paths=PackedStringArray("default_state")]
 script = ExtResource("4_1qomt")
@@ -50,8 +58,14 @@ metadata/_custom_type_script = "uid://dvhes8j010co"
 [node name="Idle" type="Node" parent="MovementStateMachine"]
 script = ExtResource("5_7e7px")
 
+[node name="Exhausted-Idle" type="Node" parent="MovementStateMachine"]
+script = ExtResource("7_54if2")
+
 [node name="Walking" type="Node" parent="MovementStateMachine"]
 script = ExtResource("6_w5jb3")
+
+[node name="Exhausted" type="Node" parent="MovementStateMachine"]
+script = ExtResource("8_gd86y")
 
 [node name="Running" type="Node" parent="MovementStateMachine"]
 script = ExtResource("6_lt4af")

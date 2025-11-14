@@ -4,6 +4,10 @@ class_name EnemyIdleAttackState
 
 var player: Player
 
+func end():
+	player = null
+	super.end()
+
 func _on_physics_process(_delta: float) -> void:
 	
 	if !player:

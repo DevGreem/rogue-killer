@@ -3,7 +3,7 @@ extends EntityIdleMovementState
 ## Estado donde el jugador esta totalmente quieto
 class_name PlayerIdleMovementState
 
-var player: Entity
+var player: Player
 
 func start():
 	player = state_owner
@@ -24,9 +24,12 @@ func _on_physics_process(delta: float):
 func _on_input(event: InputEvent):
 	
 	# Si el usuario se mueve, cambia a estado Walking
-	if UserInput.is_moving():
+	
+	if not UserInput.is_moving():
+		return
 		
-		if Input.is_action_pressed("Shifting"):
-			state_machine.set_state($"../Running")
-		else:
-			state_machine.set_state($"../Walking")
+	if Input.is_action_pressed("Shifting"):
+		state_machine.set_state($"../Running")
+		return
+	
+	state_machine.set_state($"../Walking")

@@ -9,3 +9,7 @@ func start():
 	enemy = state_owner
 	
 	super.start()
+
+func end():
+	enemy = null
+	super.end()

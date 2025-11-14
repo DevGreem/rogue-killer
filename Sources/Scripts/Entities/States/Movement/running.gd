@@ -15,13 +15,17 @@ func start():
 	
 	super.start()
 
+func end():
+	entity = null
+	super.end()
+
 func _on_physics_process(delta: float) -> void:
 	entity.consume_stamine(delta)
 
-## Si se expira la duracion de la energia, cambia el estado a Walking
+## Si la energia llega 0, cambia el estado a Exausto
 func _on_tired():
 	#print("Character tired")
 	
 	#TODO: Crear un estado de Exhausted para que no se pueda correr
 	# Cambia el estado a Walking
-	state_machine.set_state($"../Walking")
+	state_machine.set_state($"../Exhausted")

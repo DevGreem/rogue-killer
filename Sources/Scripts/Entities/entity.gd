@@ -61,6 +61,8 @@ func has_stamine() -> bool:
 
 #endregion
 
+#region COMBAT METHODS
+
 func die() -> void:
 	queue_free()
 
@@ -78,6 +80,8 @@ func receive_attack(damage: float):
 	
 	if data.stats.health.current_value <= 0:
 		die()
+
+#endregion
 
 func _on_change_backpack():
 	pass

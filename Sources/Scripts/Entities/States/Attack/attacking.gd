@@ -7,9 +7,7 @@ var entity: Entity
 func start():
 	entity = state_owner
 	perform_attack()
-
-func end():
-	pass
+	super.start()
 
 func perform_attack():
 	#print("Creando hitbox")

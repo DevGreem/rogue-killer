@@ -53,6 +53,9 @@ func state_has_method(method_name: String, ...args):
 	if !current_state:
 		return
 	
+	if !current_state.started:
+		return
+	
 	var method := Callable(current_state, method_name)
 	
 	if current_state.has_method(method_name):

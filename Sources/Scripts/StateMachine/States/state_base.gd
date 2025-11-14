@@ -1,17 +1,20 @@
 @abstract class_name StateBase extends Node
 
+signal on_start
+signal on_end
+
+#region VARIABLES
+
 @onready var state_owner: Node = owner
 
 var state_machine: StateMachine
 
-@warning_ignore('unused_signal')
-signal on_start
+var started: bool = false
 
-@warning_ignore('unused_signal')
-signal on_end
+#endregion
 
-@warning_ignore('unused_parameter')
 func start() -> void:
+	started = true
 	on_start.emit()
 	
 func end() -> void:

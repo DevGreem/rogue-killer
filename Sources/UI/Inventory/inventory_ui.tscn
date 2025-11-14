@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://dk55ndmlv6546"]
+
+[ext_resource type="Script" uid="uid://chousbaupoojf" path="res://Sources/UI/Inventory/inventory_ui.gd" id="1_3uec1"]
+[ext_resource type="Script" uid="uid://cnof7wostvyja" path="res://Sources/UI/Inventory/player_inventory.gd" id="2_qbu17"]
+[ext_resource type="Script" uid="uid://bwhh1wh0vg61e" path="res://Sources/UI/Inventory/player_equipment.gd" id="3_y4n60"]
+
+[node name="InventoryContainerUI" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+script = ExtResource("1_3uec1")
+
+[node name="InventoryUI" type="GridContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 8
+script = ExtResource("2_qbu17")
+metadata/_custom_type_script = "uid://dsf7lf56vlin5"
+
+[node name="EquipmentUI" type="GridContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 2
+script = ExtResource("3_y4n60")
+metadata/_custom_type_script = "uid://dsf7lf56vlin5"
+
+[connection signal="ready" from="." to="InventoryUI" method="_on_inventory_container_ui_ready"]
+[connection signal="ready" from="." to="EquipmentUI" method="_on_inventory_container_ui_ready"]

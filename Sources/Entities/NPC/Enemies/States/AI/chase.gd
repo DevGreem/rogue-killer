@@ -5,20 +5,25 @@ class_name EnemyChaseAIState
 signal on_exit_player(body: Player)
 
 var enemy: Enemy
-var entered_body: Node2D
+var player: Player
 var attack_machine: StateMachine
 
 func start():
 	enemy = state_owner
 	attack_machine = $"../../AttackStateMachine"
+	super.start()
+
+func end():
+	player = null
+	super.end()
 
 func _on_physics_process(_delta: float):
 	
-	enemy.look_at(entered_body.global_position)
+	enemy.look_at(player.global_position)
 	
 	var stats := enemy.data.stats
 	
-	var direction := enemy.global_position.direction_to(entered_body.global_position)
+	var direction := enemy.global_position.direction_to(player.global_position)
 	
 	enemy.velocity = direction*stats.speed.walking
 	
@@ -33,4 +38,4 @@ func _on_exit_player(body: Node2D) -> void:
 	state_machine.set_state($"../Patrol")
 
 func _patrol_on_detect_player(body: Node2D) -> void:
-	entered_body = body
+	player = body as Player

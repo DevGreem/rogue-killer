@@ -1,0 +1,3 @@
+extends EntityWalkingMovementState
+
+class_name EntityExhaustedMovementState
