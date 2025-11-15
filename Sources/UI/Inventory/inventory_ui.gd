@@ -1,10 +1,11 @@
-@tool
-extends HBoxContainer
-class_name GridInventoryUI
+extends Control
+
+class_name InventoryUI
 
 signal on_open_inventory(_inventory: EntityInventory, _equipment: Equipment)
 signal on_close_inventory
 signal on_change_inventory(before: EntityInventory, now: EntityInventory)
+signal on_change_equipment(before: Equipment, now: Equipment)
 
 @export var inventory: EntityInventory:
 	set(value):
@@ -15,7 +16,16 @@ signal on_change_inventory(before: EntityInventory, now: EntityInventory)
 		on_change_inventory.emit(inventory, value)
 		inventory = value
 		
-@export var equipment: Equipment
+@export var equipment: Equipment:
+	set(value):
+		
+		if value == equipment:
+			return
+		
+		on_change_equipment.emit(equipment, value)
+		equipment = value
+
+@onready var tooltip: ItemTooltip = $ItemTooltip
 
 ## Muestra la interfaz del inventario
 func see_inventory():
@@ -30,9 +40,6 @@ func close_inventory():
 	hide()
 
 func _input(_event: InputEvent):
-	
-	if !visible:
-		return
 	
 	if Input.is_action_just_pressed("Close-Inventory"):
 		close_inventory()

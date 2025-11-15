@@ -1,7 +1,8 @@
-[gd_resource type="InventoryDatabase" load_steps=12 format=3 uid="uid://cbh4agn0hf6m"]
+[gd_resource type="InventoryDatabase" load_steps=13 format=3 uid="uid://cbh4agn0hf6m"]
 
 [ext_resource type="Texture2D" uid="uid://cb2n8pmfr1ami" path="res://assets/Textures/Tests/spikes.png" id="1_nxxc6"]
-[ext_resource type="Texture2D" uid="uid://dcseasgupsk5d" path="res://icon.svg" id="2_nxxc6"]
+[ext_resource type="Texture2D" uid="uid://c6f1g2gmgpygn" path="res://assets/Textures/Tests/empty.png" id="2_aggbj"]
+[ext_resource type="Texture2D" uid="uid://bggbbo8oyyr5o" path="res://assets/Textures/Tests/invisible.png" id="3_aggbj"]
 [ext_resource type="Texture2D" uid="uid://b0wo67cqf0o7o" path="res://assets/Textures/Tests/fist.png" id="3_yla6q"]
 
 [sub_resource type="ItemCategory" id="ItemCategory_5keoa"]
@@ -41,18 +42,16 @@ id = "empty"
 can_stack = false
 max_stack = 1
 name = "Empty"
-icon = ExtResource("2_nxxc6")
+icon = ExtResource("2_aggbj")
 categories = Array[ItemCategory]([SubResource("ItemCategory_nxxc6")])
-description = "Empty Item"
 
 [sub_resource type="ItemDefinition" id="ItemDefinition_yla6q"]
 id = "invisible_tile"
 can_stack = false
 max_stack = 1
 name = "Invisible Tile"
-icon = ExtResource("2_nxxc6")
+icon = ExtResource("3_aggbj")
 categories = Array[ItemCategory]([SubResource("ItemCategory_nxxc6")])
-description = "Set a tile invisible"
 
 [sub_resource type="ItemDefinition" id="ItemDefinition_aggbj"]
 id = "fist"

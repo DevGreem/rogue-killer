@@ -29,12 +29,13 @@ position = Vector2(-6.1035156e-05, -1.6393127)
 shape = SubResource("RectangleShape2D_aop4j")
 
 [node name="Equipment" type="GridInventory" parent="."]
-size = Vector2i(2, 4)
+size = Vector2i(3, 3)
 database = ExtResource("8_1qomt")
 script = ExtResource("3_cbr6d")
 metadata/_custom_type_script = "uid://dnexavor5fxt5"
 
 [node name="Inventory" type="GridInventory" parent="."]
+size = Vector2i(4, 4)
 database = ExtResource("8_1qomt")
 script = ExtResource("4_fltg1")
 metadata/_custom_type_script = "uid://b5wi766a13hav"

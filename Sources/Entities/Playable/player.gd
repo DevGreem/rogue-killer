@@ -3,7 +3,7 @@ extends Entity
 
 class_name Player
 
-@onready var inventory_ui: GridInventoryUI = $CanvasLayer/InventoryUI
+@onready var inventory_ui: InventoryUI = $CanvasLayer/InventoryUI
 
 func _input(_event: InputEvent):
 	
