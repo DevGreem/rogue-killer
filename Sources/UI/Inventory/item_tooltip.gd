@@ -8,13 +8,18 @@ signal on_close_tooltip
 func _ready():
 	z_index = 1000
 
+func _input(_event: InputEvent):
+	
+	if visible:
+		global_position = get_global_mouse_position()
+
 func _on_hover_item(item: ItemDefinition):
 	
 	text = "{name}\n{description}".format({
 		"name": item.name,
 		"description": item.description
 	})
-	global_position = get_global_mouse_position()
+	fit_content = true
 	
 	show()
 	on_show_tooltip.emit(item)

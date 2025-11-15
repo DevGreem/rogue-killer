@@ -44,8 +44,8 @@ func _load_inventory():
 	)
 
 func _unload_inventory():
-	for child_index in range(0, get_child_count()-1):
-		remove_child(get_child(child_index))
+	for child in get_children():
+		child.queue_free()
 
 func _on_hover_item(item: ItemDefinition):
 	on_hover_item.emit(item)

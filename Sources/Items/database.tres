@@ -1,4 +1,4 @@
-[gd_resource type="InventoryDatabase" load_steps=13 format=3 uid="uid://cbh4agn0hf6m"]
+[gd_resource type="InventoryDatabase" load_steps=14 format=3 uid="uid://cbh4agn0hf6m"]
 
 [ext_resource type="Texture2D" uid="uid://cb2n8pmfr1ami" path="res://assets/Textures/Tests/spikes.png" id="1_nxxc6"]
 [ext_resource type="Texture2D" uid="uid://c6f1g2gmgpygn" path="res://assets/Textures/Tests/empty.png" id="2_aggbj"]
@@ -24,6 +24,13 @@ name = "Non Item"
 [sub_resource type="ItemCategory" id="ItemCategory_yla6q"]
 id = "weapon"
 name = "Weapon"
+
+[sub_resource type="ItemCategory" id="ItemCategory_hsfii"]
+id = "general_item"
+name = "General Item"
+item_properties = {
+"modifiers": "res://Data/Stats/StatsModifierData.gd"
+}
 
 [sub_resource type="ItemDefinition" id="ItemDefinition_ioicx"]
 id = "testitem"
@@ -64,4 +71,4 @@ description = "A Fist"
 
 [resource]
 items = Array[ItemDefinition]([SubResource("ItemDefinition_ioicx"), SubResource("ItemDefinition_nxxc6"), SubResource("ItemDefinition_yla6q"), SubResource("ItemDefinition_aggbj")])
-item_categories = Array[ItemCategory]([SubResource("ItemCategory_5keoa"), SubResource("ItemCategory_aggbj"), SubResource("ItemCategory_nxxc6"), SubResource("ItemCategory_yla6q")])
+item_categories = Array[ItemCategory]([SubResource("ItemCategory_5keoa"), SubResource("ItemCategory_aggbj"), SubResource("ItemCategory_nxxc6"), SubResource("ItemCategory_yla6q"), SubResource("ItemCategory_hsfii")])

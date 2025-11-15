@@ -1,3 +1,3 @@
 @abstract class_name UniqueData extends Resource
 
-@export var ID: String = ""
+@export var id: String = ""
