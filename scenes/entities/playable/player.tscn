@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://r6aiiuphu14j"]
+
+[ext_resource type="PackedScene" uid="uid://bwo0ntnht8f80" path="res://scenes/entities/entity.tscn" id="1_xyxpf"]
+[ext_resource type="Script" uid="uid://dijtb627rylh3" path="res://scripts/entities/playable/player_movement.gd" id="2_krohd"]
+
+[node name="Player" instance=ExtResource("1_xyxpf")]
+
+[node name="PlayerMovement" type="Node" parent="." index="0" node_paths=PackedStringArray("player")]
+script = ExtResource("2_krohd")
+player = NodePath("..")

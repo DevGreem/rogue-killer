@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwo0ntnht8f80"]
+
+[ext_resource type="Script" uid="uid://b3t0p0oxdxyod" path="res://scripts/entities/entity.gd" id="1_o12gi"]
+[ext_resource type="Script" uid="uid://dvhes8j010co" path="res://scripts/state_machine/state_machine.gd" id="2_7agfi"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7sg2j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_366ky"]
+
+[node name="Entity" type="CharacterBody2D"]
+script = ExtResource("1_o12gi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7sg2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_366ky")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("2_7agfi")
+metadata/_custom_type_script = "uid://dvhes8j010co"

@@ -17,17 +17,16 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Constants="*res://Sources/Scripts/Singleload/constants.gd"
-ClassManager="*res://Sources/Scripts/Singleload/Managers/class_manager.gd"
-FileManager="*res://Sources/Scripts/Singleload/Managers/file_manager.gd"
-JsonManager="*res://Sources/Scripts/Singleload/Managers/json_manager.gd"
-SceneManager="*res://Sources/Scripts/Singleload/Managers/scene_manager.gd"
-UserInput="*res://Sources/Scripts/Singleload/user_input.gd"
-Config="*res://Sources/Scripts/Singleload/configs.gd"
-KeymapManager="*res://Sources/Scripts/Singleload/Managers/keymap_manager.gd"
-Enums="*res://Sources/Scripts/Singleload/enums.gd"
-Utilities="*res://Sources/Scripts/Singleload/Utilities/utilities.gd"
-ArrayUtilities="*res://Sources/Scripts/Singleload/Utilities/array_utilities.gd"
+Constants="*res://scripts/singleload/constants.gd"
+ClassManager="*res://scripts/singleload/managers/class_manager.gd"
+FileManager="*res://scripts/singleload/managers/file_manager.gd"
+JsonManager="*res://scripts/singleload/managers/json_manager.gd"
+SceneManager="*res://scripts/singleload/managers/scene_manager.gd"
+UserInput="*res://scripts/singleload/user_input.gd"
+Config="*res://scripts/singleload/configs.gd"
+KeymapManager="*res://scripts/singleload/managers/keymap_manager.gd"
+Enums="*res://scripts/singleload/enums.gd"
+ArrayUtilities="*res://scripts/singleload/utilities/array_utilities.gd"
 
 [debug]
 

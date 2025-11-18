@@ -1,3 +1,0 @@
-extends StateBase
-
-class_name EntityIdleMovementState
