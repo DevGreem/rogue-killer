@@ -26,7 +26,8 @@ UserInput="*res://Sources/Scripts/Singleload/user_input.gd"
 Config="*res://Sources/Scripts/Singleload/configs.gd"
 KeymapManager="*res://Sources/Scripts/Singleload/Managers/keymap_manager.gd"
 Enums="*res://Sources/Scripts/Singleload/enums.gd"
-Utilities="*res://Sources/Scripts/Singleload/utilities.gd"
+Utilities="*res://Sources/Scripts/Singleload/Utilities/utilities.gd"
+ArrayUtilities="*res://Sources/Scripts/Singleload/Utilities/array_utilities.gd"
 
 [debug]
 

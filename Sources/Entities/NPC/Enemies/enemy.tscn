@@ -32,6 +32,7 @@ script = ExtResource("4_0p5co")
 script = ExtResource("5_s3ofe")
 
 [node name="DetectionArea" type="Area2D" parent="." index="6"]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" index="0"]
 shape = SubResource("CircleShape2D_48lxr")

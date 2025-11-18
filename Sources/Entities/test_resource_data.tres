@@ -71,6 +71,7 @@ animations = [{
 
 [resource]
 script = ExtResource("3_68gps")
+name = "TestEntity"
 stats = SubResource("Resource_oe1c2")
 stats_modifier = SubResource("Resource_n2l7h")
 texture = SubResource("SpriteFrames_bpmh0")

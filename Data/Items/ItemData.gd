@@ -5,6 +5,8 @@ class_name ItemData
 ## Nombre del objeto
 @export var name: String = ""
 
+@export var icon: SpriteFrames
+
 ## Acciones que puede realizar el jugador con el objeto
 ## Las acciones estan definidas en [enum Enums.ItemAction]
 @export var ACTIONS: Array[Enums.ItemAction] = []
@@ -24,28 +26,26 @@ class_name ItemData
 @export var size: Vector2
 
 ## Carga un [ItemDefinition] en un [ItemData] para poder usarlo como una clase
-static func load_definition(item: ItemDefinition) -> ItemData:
+func load_definition(item: ItemDefinition) -> void:
 	
 	var _properties := item.properties
 	
-	var item_data := ItemData.new()
-	item_data.id = item.id
-	item_data.name = item.name
-	item_data.description = item.description
-	item_data.size = item.size
-	item_data.stack.max_value = item.max_stack
+	id = item.id
+	name = item.name
+	description = item.description
+	size = item.size
+	stack.max_value = item.max_stack if item.can_stack else 1
 	
-	var props := item_data.get_property_list()
+	var props := get_property_list()
 	
 	for property in props:
 		var property_name: String = property["name"]
+		property_name = property_name.to_lower()
 		
 		if !_properties.has(property_name):
 			return
 		
-		item_data.set(property_name, _properties[property_name])
-		
-	return item_data
+		set(property_name, _properties[property_name])
 
 ## Exporta un [ItemData] a un [ItemDifinition]
 func export_definition() -> ItemDefinition:

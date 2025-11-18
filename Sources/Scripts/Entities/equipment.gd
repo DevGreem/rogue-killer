@@ -9,39 +9,75 @@ class_name Equipment
 ## Arma equipada
 var weapon: WeaponData:
 	get:
-		return get_item(Vector2(0, 0))
+		var item := get_item(Vector2(0, 0))
+		
+		var data := WeaponData.new()
+		
+		data.load_definition(item)
+		
+		return data
 	set(value):
 		set_tile(Vector2(0, 0), value.id)
 
 ## Lanzable equipado
 var throwable: ThrowableData:
 	get:
-		return get_item(Vector2(1, 0))
+		var item := get_item(Vector2(1, 0))
+		
+		var data := ThrowableData.new()
+		
+		data.load_definition(item)
+		
+		return data
 	set(value):
 		set_tile(Vector2(1, 0), value.id)
 
 ## Mochila equipada
 var backpack: BackpackData:
 	get:
-		return get_item(Vector2(2, 0))
+		var item := get_item(Vector2(2, 0))
+		
+		var data := BackpackData.new()
+		
+		data.load_definition(item)
+		
+		return data
 	set(value):
 		set_tile(Vector2(2, 0), value.id)
 
 var head: HeadArmorData:
 	get:
-		return get_item(Vector2(0, 1))
+		var item := get_item(Vector2(0, 1))
+		
+		var data := HeadArmorData.new()
+		
+		data.load_definition(item)
+		
+		return data
 	set(value):
 		set_tile(Vector2(0, 1), value.id)
 
 var chest: ChestArmorData:
 	get:
-		return get_item(Vector2(1, 1))
+		var item := get_item(Vector2(1, 1))
+		
+		var data := ChestArmorData.new()
+		
+		data.load_definition(item)
+		
+		return data
 	set(value):
 		set_tile(Vector2(1, 1), value.id)
 
 var feet: FeetArmorData:
 	get:
-		return get_item(Vector2(2, 1))
+		var item := get_item(Vector2(2, 1))
+		
+		var data := FeetArmorData.new()
+		
+		data.load_definition(item)
+		
+		return data
 	set(value):
 		set_tile(Vector2(2, 1), value.id)
 

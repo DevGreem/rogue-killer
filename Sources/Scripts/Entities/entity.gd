@@ -5,17 +5,23 @@ class_name Entity
 
 @export var data: EntityData
 @onready var sprite: AnimatedSprite2D = $Sprite
-@onready var collision: CollisionShape2D = $EntityCollision
+@onready var collision: SizableCollision2D = $EntityCollision
 @onready var inventory: GridInventory = $Inventory
 @onready var equipment: GridInventory = $Equipment
 
 func _ready():
-	if data and sprite:
+	
+	if data:
+		name = data.name
+	
+	if data.texture:
+		print("Tiene textura")
+		sprite.sprite_frames = data.texture
+		sprite.animation = "default"
+		sprite.play()
 		
-		if data.texture:
-			sprite.sprite_frames = data.texture
-			sprite.animation = "default"
-			sprite.play()
+		var sprite_texture := sprite.sprite_frames.get_frame_texture("default", 0)
+		collision.change_size_by_sprite(sprite_texture, sprite.scale)
 	
 	#prints("Current stamine:", data.stats.stamine.duration.current_value, "\nMax Stamine:", data.stats.stamine.duration.max_value)
 

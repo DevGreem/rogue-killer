@@ -29,7 +29,8 @@ name = "Weapon"
 id = "general_item"
 name = "General Item"
 item_properties = {
-"modifiers": "res://Data/Stats/StatsModifierData.gd"
+"modifiers": "res://Data/Stats/StatsModifierData.gd",
+"value": "res://Data/Stats/Items/ValueData.gd"
 }
 
 [sub_resource type="ItemDefinition" id="ItemDefinition_ioicx"]
@@ -66,8 +67,12 @@ can_stack = false
 max_stack = 1
 name = "Fist"
 icon = ExtResource("3_yla6q")
-categories = Array[ItemCategory]([SubResource("ItemCategory_yla6q")])
-description = "A Fist"
+properties = {
+"modifiers": "res://Data/Stats/StatsModifierData.gd",
+"value": "res://Data/Stats/Items/ValueData.gd"
+}
+categories = Array[ItemCategory]([SubResource("ItemCategory_yla6q"), SubResource("ItemCategory_hsfii")])
+description = "A [color=red]Fist[/color]"
 
 [resource]
 items = Array[ItemDefinition]([SubResource("ItemDefinition_ioicx"), SubResource("ItemDefinition_nxxc6"), SubResource("ItemDefinition_yla6q"), SubResource("ItemDefinition_aggbj")])

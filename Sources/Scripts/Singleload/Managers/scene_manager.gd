@@ -60,6 +60,7 @@ func add_item(item_name: String) -> Item:
 	
 	var item: Item = get_scene(Constants.ITEMS_PATH+"item.tscn")
 	
+	print(item)
 	item.data = loaded_data
 	item.name = loaded_data.resource_name
 	

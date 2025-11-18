@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://k2jgv743f113"]
+[gd_scene load_steps=16 format=3 uid="uid://k2jgv743f113"]
 
 [ext_resource type="Script" uid="uid://csnm62h4kqd4m" path="res://Sources/Scripts/Entities/entity.gd" id="1_1qomt"]
+[ext_resource type="Script" uid="uid://8xhmq3t21tp1" path="res://Sources/Entities/entity_collision.gd" id="2_6l50q"]
 [ext_resource type="Script" uid="uid://dnexavor5fxt5" path="res://Sources/Scripts/Entities/equipment.gd" id="3_cbr6d"]
 [ext_resource type="Script" uid="uid://dvhes8j010co" path="res://Sources/Scripts/StateMachine/state_machine.gd" id="4_1qomt"]
 [ext_resource type="Script" uid="uid://b5wi766a13hav" path="res://Sources/Scripts/Entities/entity_inventory.gd" id="4_fltg1"]
@@ -27,6 +28,7 @@ sprite_frames = SubResource("SpriteFrames_0q7ho")
 [node name="EntityCollision" type="CollisionShape2D" parent="."]
 position = Vector2(-6.1035156e-05, -1.6393127)
 shape = SubResource("RectangleShape2D_aop4j")
+script = ExtResource("2_6l50q")
 
 [node name="Equipment" type="GridInventory" parent="."]
 size = Vector2i(3, 3)

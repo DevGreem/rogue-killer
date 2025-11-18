@@ -38,8 +38,3 @@ func close_inventory():
 	print("Cerrando inventario")
 	on_close_inventory.emit()
 	hide()
-
-func _input(_event: InputEvent):
-	
-	if Input.is_action_just_pressed("Close-Inventory"):
-		close_inventory()

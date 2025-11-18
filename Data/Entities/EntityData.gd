@@ -2,6 +2,8 @@ extends Resource
 
 class_name EntityData
 
+@export var name: String = ""
+
 ## Estadisticas reales de la entidad
 @export var stats: EntityStatData
 
@@ -16,8 +18,5 @@ class_name EntityData
 
 ## Dinero de la entidad
 @export var money: int = 0
-
-## Velocidad al correr de la entidad
-@export var run_speed: float = 1.0
 
 @export var texture: SpriteFrames
